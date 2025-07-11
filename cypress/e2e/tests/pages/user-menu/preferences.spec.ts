@@ -47,7 +47,8 @@ describe('User can update their preferences', () => {
     */
     const languages = {
       '[lang="en-us"]':   1,
-      '[lang="zh-hans"]': 2
+      '[lang="ja-jp"]': 2,
+      '[lang="zh-hans"]': 3
     };
 
     prefPage.goTo();
@@ -55,7 +56,7 @@ describe('User can update their preferences', () => {
     for (const [key, value] of Object.entries(languages)) {
       prefPage.languageDropdownMenu().toggle();
       prefPage.languageDropdownMenu().isOpened();
-      prefPage.languageDropdownMenu().getOptions().should('have.length', 2);
+      prefPage.languageDropdownMenu().getOptions().should('have.length', 3);
       prefPage.languageDropdownMenu().clickOption(value);
       prefPage.languageDropdownMenu().isClosed();
       prefPage.checkLangDomElement(key);
