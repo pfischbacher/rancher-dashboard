@@ -166,8 +166,8 @@ graph:
 locale:
   menu: Locale selector menu
   en-us: English
-  ja-jp: 日本語
   zh-hans: 简体中文
+  ja-jp: 日本語
   none: (None)
 
 nav:
