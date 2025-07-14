@@ -23,11 +23,12 @@ describe('page: prefs should', () => {
         mocks: {
           $store: {
             getters: {
-              'prefs/options':        () => format,
-              'prefs/get':            jest.fn().mockReturnValue('YYYY-MM-DD HH:mm:ss'),
-              'management/schemaFor': jest.fn(),
-              isSingleProduct:        jest.fn(),
-              'i18n/t':               jest.fn(),
+              'prefs/options':           () => format,
+              'prefs/get':               jest.fn().mockReturnValue('YYYY-MM-DD HH:mm:ss'),
+              'management/schemaFor':    jest.fn(),
+              isSingleProduct:           jest.fn(),
+	      'i18n/hasMultipleLocales': () => true,
+              'i18n/t':                  jest.fn(),
             }
           }
         },
@@ -69,11 +70,12 @@ describe('page: prefs should', () => {
         mocks: {
           $store: {
             getters: {
-              'prefs/options':        () => format,
-              'prefs/get':            jest.fn().mockReturnValue('YYYY-MM-DD HH:mm:ss'),
-              'management/schemaFor': jest.fn(),
-              isSingleProduct:        jest.fn(),
-              'i18n/t':               jest.fn(),
+              'prefs/options':           () => format,
+              'prefs/get':               jest.fn().mockReturnValue('YYYY-MM-DD HH:mm:ss'),
+              'management/schemaFor':    jest.fn(),
+              isSingleProduct:           jest.fn(),
+	      'i18n/hasMultipleLocales': () => true,
+              'i18n/t':                  jest.fn(),
             }
           }
         },
