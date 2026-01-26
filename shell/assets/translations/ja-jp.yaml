@@ -7,6 +7,7 @@ generic:
   userMenu: ユーザーメニュー
   actionMenu: アクションメニュー
   namespaceFilter: ネームスペースフィルターメニュー
+  imageAlt: 汎用Rancherイメージの代替テキスト
   banners:
     altCloseBanner: バナーを閉じるアイコン
     bannerIcon: バナーアイコン
@@ -39,6 +40,7 @@ generic:
   disabled: 無効
   done: 完了
   enabled: 有効
+  error: エラー
   here: こちら
   id: ID
   ignored: 無視されました
@@ -106,24 +108,23 @@ generic:
   no: いいえ
   units:
     time:
-        5s: 5秒
-        10s: 10秒
-        30s: 30秒
-        1m: 1分
-        5m: 5分
-        15m: 15分
-        30m: 30分
-        1h: 1時間
-        2h: 2時間
-        6h: 6時間
-        1d: 1日
-        7d: 7日
-        30d: 30日
+      5s: 5秒
+      10s: 10秒
+      30s: 30秒
+      1m: 1分
+      5m: 5分
+      15m: 15分
+      30m: 30分
+      1h: 1時間
+      2h: 2時間
+      6h: 6時間
+      1d: 1日
+      7d: 7日
+      30d: 30日
   completed: 完了済み
   enable: 有効にする
   disable: 無効にする
   experimental: 実験的
-
   deprecated: 非推奨
   upgradeable: アップグレード可能
   installed: インストール済み
@@ -156,20 +157,22 @@ generic:
     genericRow: '{index}行'
   showLess: 表示を減らす
   showMore: さらに表示
+  externalIps: 外部IP
+  internalIps: 内部IP
   opensInNewTab: 新しいタブで開く
-
+tabs:
+  addItem: 新しいタブ項目を追加
+  removeItem: 選択したタブ項目を削除
 graph:
   noPermissions: グラフビューを表示する権限がありません
   loading: チャートデータを読み込み中...
   rendering: チャートをレンダリング中...
-
 locale:
   menu: ロケールセレクタメニュー
   en-us: English
   zh-hans: 簡体字中国語
-  ja-jp: 日本語
   none: (なし)
-
+  ja-jp: 日本語
 nav:
   ariaLabel:
     clusterIconKeyCombo: クラスターキーボードショートカット組み合わせアイコン
@@ -228,7 +231,7 @@ nav:
     workload: ワークロード
     monitoring: 監視
     advanced: 高度な設定
-    drivers: ドライバー
+    providers: プロバイダー
     RKE1Configuration: RKE1構成
     admission: アドミッション
     apps: アプリ
@@ -248,6 +251,7 @@ nav:
     Storage: ストレージ
     Project: プロジェクト
     resources: リソース
+    drivers: ドライバー
   ns:
     all: すべてのネームスペース
     clusterLevel: クラスターリソースのみ
@@ -277,8 +281,8 @@ nav:
     filteringDescription: この入力を利用すると、以下のリストの結果がすぐにフィルタリングされます
   header:
     setLoginPage: ログインページとして設定
-    restoreCards: 非表示のカードを復元
     showHideBanner: バナーを表示/非表示
+    restoreCards: 非表示のカードを復元
   userMenu:
     preferences: 設定
     accountAndKeys: アカウントとAPIキー
@@ -303,7 +307,6 @@ nav:
     resourceIdNotFound: 'リソース { resource } (ID: { fqid }) が見つかりません。リソースの詳細を表示できません'
     reload: 再読み込み
     separator: または
-
 product:
   apps: アプリ
   auth: ユーザーと認証
@@ -327,7 +330,6 @@ product:
   uiplugins: 拡張機能
   elemental: OS管理
   plugins: プラグイン
-
 suffix:
   percent: "%"
   milliCpus: ミリCPU
@@ -354,7 +356,6 @@ suffix:
       =1 { 回 }
       other { 回 }
     }
-
 ##############################
 # Components & Pages
 ##############################
@@ -366,9 +367,6 @@ layouts:
   unauthenticated: 未認証レイアウト
   logout: ログアウトレイアウト
   verify: 検証レイアウト
-
-windowmanager:
-  closeTab: 'タブ {tabId} を閉じる'
 about:
   title: バージョン情報
   versions:
@@ -417,7 +415,6 @@ about:
     modal:
       title: 応答時間はまだ生成されていません。
       body: より詳細な情報を提供するために応答時間を生成します。
-
 accountAndKeys:
   title: アカウントとAPIキー
   account:
@@ -462,26 +459,73 @@ accountAndKeys:
       keyCreated: 新しいAPIキーが作成されました
       bearerTokenTip: "アクセスキーとシークレットキーは、HTTP基本認証のユーザー名とパスワードとして送信してリクエストを認証できます。これらを組み合わせてベアラートークンとして使用することもできます:"
       ttlLimitedWarning: このAPIキーの有効期限はシステム構成により短縮されました
-
 addClusterMemberDialog:
   title: クラスターメンバーの追加
-
 addonConfigConfirmation:
   title: アドオンのリセット
   body: Kubernetesバージョンの変更により、アドオンの値がリセットされる可能性があります。続行する前に、値が期待どおりであることを確認してください。
-
 addProjectMemberDialog:
   title: プロジェクトメンバーの追加
-
 authConfig:
+  slo:
+    sloTitle: ログアウト時の動作
+    sloOptions:
+      onlyRancher: Rancherからログアウトし、{name}からはログアウトしない
+      logoutAll: Rancherと{name}からログアウト（{name}に登録されている他のすべてのアプリケーションを含む）
+      choose: 追加のログアウトステップで、ユーザーが上記から選択できるようにする
   accessMode:
     label: '{vendor} にログインして使用できるユーザーを設定する'
     required: 認証されたユーザーとグループのみにアクセスを制限する
-    restricted: クラスターおよびプロジェクトのメンバー、および認証されたユーザーとグループを許可する
+    restricted: 'クラスターおよびプロジェクトのメンバー、および認証されたユーザーとグループを許可する'
     unrestricted: すべての有効なユーザーを許可する
   allowedPrincipalIds:
     title: 認証されたユーザーとグループ
   associatedWarning: '外部プロバイダーを有効にするために使用される {provider} アカウントには、管理者権限が付与されます。テストアカウントまたは非管理者アカウントを使用した場合でも、そのアカウントには管理者レベルの権限が付与されます。理由については、<a href="{docsBase}/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config#external-authentication-configuration-and-principal-users" target="_blank" rel="noopener noreferrer nofollow">外部認証構成とプリンシパルユーザー</a>を参照してください。'
+  githubapp:
+    clientId:
+      label: クライアントID
+    clientSecret:
+      label: クライアントシークレット
+    githubAppId:
+      label: Github App ID
+    installationId:
+      label: インストールID
+    privateKey:
+      label: プライベートキー
+    warning: GitHub App認証プロバイダーは、<a href="https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts" target="_blank" rel="noopener noreferrer nofollow">GitHub Organizationアカウント</a>でのみ機能します。ユーザーアカウントはサポートしていません。
+    form:
+      prefix:
+        1: <li>新しいウィンドウで <a href="{baseUrl}/settings/organizations" target="_blank" rel="noopener noreferrer nofollow">GitHub組織設定</a> を開きます</li>
+        2: <li>組織の右側にある「Settings」をクリックします</li>
+        3: <li>左側のサイドバーで、「Developer settings」->「GitHub Apps」をクリックします</li>
+        4: <li>「New GitHub App」をクリックします</li>
+      instruction: 'フォームに以下の値を入力してください:'
+      app:
+        label: GitHub App名
+        value: '任意の名前（例: My {vendor}）'
+      callback:
+        label: コールバックURL
+        value: '{serverUrl}/verify-auth'
+      description:
+        label: アプリケーションの説明
+        value: 'オプション（空白のままでも可）'
+      homepage:
+        label: ホームページURL
+      create: 「Create GitHub App」をクリックします
+      suffix:
+        1: <li>「Client Secrets」の下にある「Generate a new client secret」をクリックします</li>
+        2: <li> 「Private Keys」の下にある「Generate a private key」をクリックします</li>
+        3: <li>新しく作成したOAuthアプリの「App ID」、「Client ID」、「Client Secret」、「Private Key」をコピーして、以下のフィールドに貼り付けます</li>
+    host:
+      label: GitHub Enterpriseホスト
+      placeholder: e.g. github.mycompany.example
+    target:
+      label: どのバージョンのGitHubを使用しますか？
+      private: GitHub Enterpriseのプライベートインストール
+      public: 公開されているGitHub.com
+    table:
+      server: サーバー
+      clientId: クライアントID
   github:
     clientId:
       label: クライアントID
@@ -501,10 +545,10 @@ authConfig:
       instruction: '以下の値でフォームを入力してください:'
       prefix:
         1: <li><a href="{baseUrl}/settings/developers" target="_blank" rel="noopener noreferrer nofollow">こちら</a>をクリックして、新しいウィンドウでGitHubアプリケーション設定に移動します。</li>
-        2: <li>"OAuth Apps" タブをクリックします。</li>
-        3: <li>"New OAuth App" ボタンをクリックします。</li>
+        2: <li>「OAuth Apps」 タブをクリックします。</li>
+        3: <li>「New OAuth App」 ボタンをクリックします。</li>
       suffix:
-        1: <li>"Register application" をクリックします。</li>
+        1: <li>「Register application」 をクリックします。</li>
         2: <li>新しく作成したOAuthアプリのクライアントIDとクライアントシークレットをコピーして、以下のフィールドに貼り付けます。</li>
     host:
       label: GitHub Enterpriseホスト
@@ -529,11 +573,11 @@ authConfig:
       1:
         title: '新しいウィンドウでアプリケーション設定を開くには、<a href="https://console.developers.google.com/apis/credentials" target="_blank" rel="noopener noreferrer nofollow">ここをクリック</a>してください'
         body:
-         1: アカウントにログインします。「APIとサービス」に移動し、「OAuth同意画面」を選択します。
-         2: '承認済みドメイン:'
-         3: 'アプリケーションホームページリンク: '
-         4: 'Google APIのスコープで、「email」、「profile」、「openid」を有効にします。'
-         5: '「保存」をクリックします。'
+          1: アカウントにログインします。「APIとサービス」に移動し、「OAuth同意画面」を選択します。
+          2: '承認済みドメイン:'
+          3: 'アプリケーションホームページリンク: '
+          4: 'Google APIのスコープで、「email」、「profile」、「openid」を有効にします。'
+          5: '「保存」をクリックします。'
         topPrivateDomain: '最上位プライベートドメイン:'
         ariaLabel:
           hostname: ホスト名をクリップボードにコピー
@@ -601,8 +645,11 @@ authConfig:
     serviceAccountPassword: サービスアカウントパスワード
     serviceAccountInfo: '{vendor} がAPIキーでリクエストを行った際にユーザーがどのグループのメンバーであるかを判断できるように、ログイン可能なすべてのドメインに対する読み取り専用アクセス権を持つサービスアカウントが必要です。'
     starttls:
-      label: Start TLS
+      label: TLSスタート
       tip: 接続プロセス中にTLSでラップすることにより、非暗号化接続をアップグレードします。TLSと併用することはできません。
+    searchUsingServiceAccount:
+      label: サービスアカウントによる検索を有効にする
+      tip: 有効にすると、Rancherはユーザーやグループの検索にユーザーアカウントではなくサービスアカウントを使用します。
     tls: TLS
     userEnabledAttribute: ユーザー有効化属性
     userMemberAttribute: ユーザーメンバー属性
@@ -620,14 +667,9 @@ authConfig:
     UID: UIDフィールド
     adfs: AD FSアカウントを構成
     api: '{vendor} APIホスト'
-    sloTitle: ログアウト動作
-    sloOptions:
-      onlyRancher: 'Rancherからログアウトし、{name}からはログアウトしない'
-      logoutAll: 'Rancherと{name}からログアウト ( {name} に登録されている他のすべてのアプリケーションを含む)'
-      choose: 追加のログアウトステップでユーザーに上記から選択させる
     cert:
       label: 証明書
-      placeholder: -----BEGIN CERTIFICATE-----で始まる証明書を貼り付けます
+      placeholder: '-----BEGIN CERTIFICATE-----で始まる証明書を貼り付けます'
     displayName: 表示名フィールド
     groups: グループフィールド
     key:
@@ -649,6 +691,11 @@ authConfig:
       off: LDAPユーザーとグループの検索が構成されていません
       show: 詳細を表示
       hide: 詳細を非表示
+    sloTitle: ログアウト動作
+    sloOptions:
+      onlyRancher: 'Rancherからログアウトし、{name}からはログアウトしない'
+      logoutAll: 'Rancherと{name}からログアウト ( {name} に登録されている他のすべてのアプリケーションを含む)'
+      choose: 追加のログアウトステップでユーザーに上記から選択させる
   azuread:
     tenantId:
       label: テナントID
@@ -691,6 +738,9 @@ authConfig:
         title: よろしいですか？この更新は元に戻せません。
         body: '<p><b>追加の変更が必要になる場合があります</b>。Azure ADアプリにMicrosoft GraphのDirectory.Read.All <b>アプリケーション</b>権限が追加されていることを確認してください。<br> RancherでAzure AD認証を設定する際にエンドポイントがカスタマイズされていた場合、自動的に更新されません。 </p>'
   oidc:
+    endSessionEndpoint:
+      title: セッション終了エンドポイント
+      tooltip: ユーザーをセッションからログアウトさせるために使用されるプロバイダー固有のURL
     genericoidc: OIDCアカウントを構成
     keycloakoidc: Keycloak OIDCアカウントを構成
     cognito: Amazon Cognitoアカウントを構成
@@ -712,6 +762,17 @@ authConfig:
     tokenEndpoint: トークンエンドポイント
     userInfoEndpoint: ユーザー情報エンドポイント
     acrValue: 認証コンテキスト参照
+    customClaims:
+      label: Custom Claims
+      enable:
+        label: Add custom claims
+        tooltip: Manually map OIDC claims when your provider doesn’t use standard claim names in tokens.
+      nameClaim:
+        label: Custom Name Claim
+      groupsClaim:
+        label: Custom Groups Claim
+      emailClaim:
+        label: Custom Email Claim
     cognitoIssuer: 発行者URL
     cognitoHelp: "返信URLを以下に示すURLに設定した、<b>従来のウェブアプリケーション</b>タイプのCognitoでアプリケーションクライアントを作成する必要があります。"
     scope:
@@ -720,7 +781,7 @@ authConfig:
       protip: <code>openid</code>、<code>profile</code>、<code>email</code>スコープは必須であり、削除できません。
     cert:
       label: 証明書
-      placeholder: -----BEGIN CERTIFICATE-----で始まる証明書を貼り付けます
+      placeholder: '-----BEGIN CERTIFICATE-----で始まる証明書を貼り付けます'
     key:
       label: プライベートキー
       placeholder: 通常-----BEGIN RSA PRIVATE KEY-----で始まるプライベートキーを貼り付けます
@@ -734,14 +795,12 @@ authConfig:
   noneEnabled: ローカル認証は常に有効ですが、以下の追加の認証プロバイダーを選択できます。
   localEnabled: '{vendor} は、ローカルデータベースのアカウントへのアクセスを許可するように構成されています。'
   manageLocal: アカウントを管理
-
 authGroups:
   actions:
     refresh: グループメンバーシップを更新
     assignRoles: グローバルロールを割り当てる
   assignEdit:
     assignTitle: グループにグローバルロールを割り当てる
-
 assignTo:
   title: |-
     {count, plural,
@@ -754,7 +813,6 @@ assignTo:
       other { {count} 個のクラスターを割り当てる&hellip; }
     }
   workspace: ワークスペース
-
 asyncButton:
   alt:
     iconAlt: 非同期ボタンアイコン
@@ -799,11 +857,11 @@ asyncButton:
     success: 無効化済み
     waiting: 無効化中&hellip;
   activate:
-    action:  アクティブ化
+    action: アクティブ化
     waiting: アクティブ化中&hellip;
     success: アクティブ化済み
   deactivate:
-    action:  非アクティブ化
+    action: 非アクティブ化
     waiting: 非アクティブ化中&hellip;
     success: 非アクティブ化済み
   diagnostic:
@@ -818,6 +876,10 @@ asyncButton:
     action: ダウンロード
     success: 保存中
     waiting: ダウンロード中&hellip;
+  downgrade:
+    action: ダウングレード
+    success: ダウングレード済み
+    waiting: ダウングレード中&hellip;
   drain:
     action: ドレイン
     success: ドレイン済み
@@ -826,6 +888,10 @@ asyncButton:
     action: 保存
     success: 保存済み
     waiting: 保存中&hellip;
+  editVersion:
+    action: 変更を保存
+    success: 保存済み
+    waiting: 変更を保存中&hellip;
   editAndContinue:
     action: 保存して続行
     success: 保存済み
@@ -844,6 +910,10 @@ asyncButton:
     waiting: インポート中&hellip;
   install:
     action: インストール
+    success: インストール済み
+    waiting: インストール中&hellip;
+  installVersion:
+    action: 変更を保存中&hellip;
     success: インストール済み
     waiting: インストール中&hellip;
   load:
@@ -925,7 +995,6 @@ asyncButton:
     action: 生成
     success: 生成済み
     waiting: 生成中&hellip;
-
 backupRestoreOperator:
   backup:
     label: リソースセット
@@ -1011,7 +1080,6 @@ backupRestoreOperator:
     useBackup: バックアップCRで指定されたS3の場所を使用する
     useDefault: インストール中に設定されたデフォルトの保存場所を使用する
   targetBackup: ターゲットバックアップ
-
 catalog:
   app:
     managed: 管理済み
@@ -1042,7 +1110,9 @@ catalog:
         label: チャートバージョン
         showMore: もっと見る
         showLess: 表示を減らす
+        missingVersionDate: No date available for this chart version
       home: ホーム
+      repository: Repository Page
       maintainers: メンテナー
       related: 関連
       chartUrls: チャート
@@ -1053,6 +1123,12 @@ catalog:
     deprecatedWarning: '{chartName}は非推奨としてマークされています。将来削除される可能性があるため、このhelmチャートをインストールする際は注意してください。'
     experimentalWarning: '{chartName}は実験的としてマークされています。期待どおりに機能しない可能性があるため、このhelmチャートをインストールする際は注意してください。'
     deprecatedAndExperimentalWarning: '{chartName}は非推奨かつ実験的としてマークされています。将来削除される可能性があり、期待どおりに機能しない可能性があるため、このhelmチャートをインストールする際は注意してください。'
+    chartButton:
+      action:
+        install: Install this version
+        edit: Edit the current version
+        upgrade: Upgrade to this version
+        downgrade: Downgrade to this version
   charts:
     browseAriaLabel: チャートグリッドのみ表示
     iconAlt: '{app}カード/グリッドアイテムのアイコン'
@@ -1070,6 +1146,8 @@ catalog:
     header: チャート
     noCharts:
       title: 表示するチャートがありません
+      message: '<b>Tips:</b> undo the last filter you applied or <resetAllFilters>clear all filters</resetAllFilters>, and ensure you have the right <repositoriesUrl>repositories</repositoriesUrl> in place.'
+      docsMessage: 'Want to learn more about Helm Charts and Apps? Read our <docsUrl>documentation</docsUrl>.'
       messagePart1: <b>ヒント:</b> 最後に適用したフィルターを元に戻すか、
       messagePart2: すべてのフィルターをクリア
       messagePart3: '、そして正しい<a tabindex="0" href={repositoriesUrl} rel="noopener noreferrer nofollow">リポジトリ</a>が配置されていることを確認してください。'
@@ -1087,21 +1165,23 @@ catalog:
       label: 新規追加
       ariaLabel: 新しいリポジトリを追加
     appChartCard:
+      subHeaderItem:
+        missingVersionDate: Last updated date is not available for this chart
       footerItem:
         ariaLabel: フィルタを適用
     statusFilterCautions:
       installation: インストール状態は100%正確に判断できません
       upgradeable: アップグレード可能状態は100%正確に判断できません
     totalChartsMessage: |-
-        {count , plural,
-          =1 { 合計{count}つのチャート }
-          other { 合計{count}つのチャート }
-        }
+      {count , plural,
+        =1 { 合計{count}つのチャート }
+        other { 合計{count}つのチャート }
+      }
     totalMatchedChartsMessage: |-
-        {count , plural,
-          =1 { 条件に一致する{count}つのチャート。 }
-          other { 条件に一致する{count}つのチャート。 }
-        }
+      {count , plural,
+        =1 { 条件に一致する{count}つのチャート。 }
+        other { 条件に一致する{count}つのチャート。 }
+      }
     resetFilters:
       title: すべてのフィルターをクリア
     sort:
@@ -1112,19 +1192,53 @@ catalog:
       alphaDescending: チャート名、Z → A
     refreshButton:
       label: すべてのリポジトリを更新
+    findSimilar:
+      message: "Find similar charts based on this {type}"
+      types:
+        keyword: keyword
+        repo: repository
+        category: category
+        tag: tag
   install:
     action:
       goToUpgrade: 編集/アップグレード
     appReadmeMissing: このチャートには追加のチャート情報がありません。
     appReadmeTitle: チャート情報 (Helm README)
+    button:
+      alreadyInstalled: '{chart} version {version} is already installed.'
+      viewDetails: View chart details
+      customizeInstall: Customize Install Options
+      viewLogs: View Installation Logs
+      waitForLogs: Installation initialized; waiting for logs...
+      canNotCreateRepos: It looks like you don't have permission to add repositories and install helm charts.
+      canNotInstallApps: The {repo} repository has been added, but you don't have permission to install charts from it.
+      stages:
+        addRepo:
+          action: Add the {repo} repository
+          waiting: Adding {repo} repository...
+          success: Repository added
+          error: Error adding {repo} repository
+        loadCharts:
+          action: Fetch {repo} repository chart(s)
+          waiting: Fetching {repo} repository chart(s)...
+          success: '{chart} found'
+          error: '{chart} chart not found - Try again?'
+        installChart:
+          action: Install {chart}
+          waiting: Installing {chart}...
+          success: '{chart} installation started'
+          error: Error installing {chart}
+        waitForLogs:
+          action: View installation logs
+          waiting: Waiting for installation logs...
+          error: Unable to load installation logs
+      errors:
+        fetchChart: Error retrieving chart from repository
+        alreadyInstalled: Chart already installed
+        timeoutWaiting: Timed out waiting for logs
     chart: チャート
     warning:
-      managed:
-        '警告: {manager}は{name}アプリのデプロイとアップグレードを管理します。このアプリのアップグレードはサポートされていません。<br>
-        {version, select,
-          null { }
-          other { ほとんどの状況で、{version}バージョンのRancherが実行中のRancherのバージョンと互換性があることを確認するために、ユーザーの介入は必要ありません。}
-        }'
+      managed: '警告: {manager}は{name}アプリのデプロイとアップグレードを管理します。このアプリのアップグレードはサポートされていません。<br> {version, select, null { } other { ほとんどの状況で、{version}バージョンのRancherが実行中のRancherのバージョンと互換性があることを確認するために、ユーザーの介入は必要ありません。} }'
     error:
       requiresFound: 'このチャートをインストールする前に、<a href="{url}">{name}</a>がインストールされている必要があります。'
       requiresMissing: 'このチャートは{name}を提供する別のチャートを必要としますが、見つかりませんでした。'
@@ -1183,14 +1297,7 @@ catalog:
       basics:
         label: メタデータ
         subtext: アプリのメタデータを設定する
-        description: 'このプロセスは、{action, select,
-            install { 作成 }
-            upgrade { アップグレード }
-            update { 更新 }
-          } を {existing, select,
-            true { アプリ }
-            false { チャート }
-          } に役立ちます。最初に、{vendor} がアプリを管理するために使用するいくつかの基本情報を設定します。'
+        description: 'このプロセスは、{action, select, install { 作成 } upgrade { アップグレード } update { 更新 } } を {existing, select, true { アプリ } false { チャート } } に役立ちます。最初に、{vendor} がアプリを管理するために使用するいくつかの基本情報を設定します。'
         nsCreationDescription: "アプリを新しい名前空間にインストールするには、名前空間フィールドに名前を入力して選択します。"
         createNamespace: "名前空間 <code>{namespace}</code> が作成されます。"
       clusterTplVersion:
@@ -1242,7 +1349,6 @@ catalog:
       rancher-partner-charts: パートナー
       rancher-rke2-charts: RKE2
       rancher-ui-plugins: Rancher拡張機能
-
     target:
       git: Helmチャートまたはクラスタテンプレート定義を含むGitリポジトリ
       http: Helmによって生成されたインデックスへのhttp(s) URL
@@ -1280,12 +1386,12 @@ catalog:
       install: インストール
       upgrade: アップグレード/編集
       edit: 編集
+      downgrade: Downgrade
       remove: 削除
       manage: 管理
   os:
     versionIncompatible: "このバージョンはWindowsノードと互換性がありません。"
     chartIncompatible: "このチャートはWindowsノードと互換性がありません。"
-
 changePassword:
   title: パスワードの変更
   cancel: キャンセル
@@ -1311,11 +1417,9 @@ changePassword:
     failedToChange: パスワードの変更に失敗しました
     failedDeleteKey: キーの削除に失敗しました
     failedDeleteKeys: キーの削除に失敗しました
-
 chartHeading:
   overview: 概要
   poweredBy: "提供元:"
-
 compliance:
   addTest: テストIDを追加
   alertNeeded: |-
@@ -1377,11 +1481,9 @@ compliance:
   detail:
     subRow:
       noNodes: 追加情報なし
-
 cluster:
   jwtAuthentication:
-    banner: "JWT認証を使用したサービスアカウントアクセスは、クラスター作成後に<br>
-      <code>クラスター管理 > 詳細 > JWT認証</code>から設定できます。"
+    banner: "JWT認証を使用したサービスアカウントアクセスは、クラスター作成後に<br> <code>クラスター管理 > 詳細 > JWT認証</code>から設定できます。"
   addonChart:
     rancher-vsphere-cpi:
       label: "アドオン: vSphere CPI"
@@ -1393,7 +1495,7 @@ cluster:
       label: "アドオン: Calico"
       configuration: Calico
     rke2-calico-crd:
-      label:  "アドオン: Calico"
+      label: "アドオン: Calico"
       configuration: Calico
     rke2-canal:
       label: "アドオン: Canal"
@@ -1450,6 +1552,7 @@ cluster:
       nodeLabel:
         title: ノードラベル
         label: ラベルを追加
+      ipv6: "It looks like this cluster uses IPv6 networking: <code>Node Private IP</code> should be set to the cluster's IPV6 address."
     registrationCommand:
       label: 登録コマンド
       linuxDetail: 登録したい既存のLinuxマシンそれぞれでこのコマンドを実行してください。
@@ -1540,20 +1643,22 @@ cluster:
         label: シークレットキー
         placeholder: あなたのAPIシークレットキー
     vmwarevsphere:
-        server:
-          label: vCenterまたはESXiサーバー
-          placeholder: vcenter.domain.com
-        port:
-          label: ポート
-        username:
-          label: ユーザー名
-        password:
-          label: パスワード
-        note: '注意: 無償版ESXiライセンスではAPIアクセスはサポートされていません。有効なライセンスまたは評価ライセンスを持つサーバーのみがサポートされます。'
+      server:
+        label: vCenterまたはESXiサーバー
+        placeholder: vcenter.domain.com
+      port:
+        label: ポート
+      username:
+        label: ユーザー名
+      password:
+        label: パスワード
+      note: '注意: 無償版ESXiライセンスではAPIアクセスはサポートされていません。有効なライセンスまたは評価ライセンスを持つサーバーのみがサポートされます。'
     gcp:
       authEncodedJson:
         label: サービスアカウント
         placeholder: サービスアカウントのプライベートキーJSONファイル
+        gke: GKE
+        gce: GCE
         help: |-
           <p><a href="https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts" target="_blank" rel="noopener noreferrer nofollow">サービスアカウント</a>をJSONプライベートキーで作成し、ここにJSONを提供します。
           以下のIAMロールが必要です:</p>
@@ -1600,6 +1705,12 @@ cluster:
         label: Kubeconfigコンテンツ
       placeholder: '名前空間/名前'
       cluster: インポートされたHarvesterクラスター
+      enableTpm: Enable TPM
+      enableCpuPinning: Enable CPU Pinning
+      cpuPinningTooltip: Enable CPU Pinning brings better performance and reduce latency for the harvester virtual machine
+      cpuManagerWarning: You must enable CPU Manager for at least one node in harvester host page to enable CPU Pinning for VM
+      secureBoot: Secure Boot
+      enableEfi: Booting in EFI mode
       installGuestAgent: ゲストエージェントをインストール
       tokenExpirationWarning: '警告: Harvester Cloud Credentialsは、有効期限がある可能性のある基礎となる認証トークンを使用します。管理操作への影響については、以下の<a href="https://harvesterhci.io/kb/renew_harvester_cloud_credentials" target="_blank" rel="noopener nofollow">ナレッジベース記事</a>を参照してください。'
   description:
@@ -1611,8 +1722,7 @@ cluster:
       label: これはHarvesterクラスターです - 管理するにはHarvester機能フラグを有効にしてください
       state: 警告
       cloudProvider:
-        incompatible:
-          現在のHarvesterバージョンが選択されたRKE2 Kubernetesバージョンと互換性がないため、Harvesterクラウドプロバイダーを選択できません。サポートされているKubernetesバージョンを確認するには、<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">ここをクリック</a>してください。
+        incompatible: 現在のHarvesterバージョンが選択されたRKE2 Kubernetesバージョンと互換性がないため、Harvesterクラウドプロバイダーを選択できません。サポートされているKubernetesバージョンを確認するには、<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.suse.com/suse-harvester/support-matrix/all-supported-versions">ここをクリック</a>してください。
     clusterWarning: |-
       表示されていないHarvesterクラスターが{count, plural,
       =1 {1つあります}
@@ -1639,6 +1749,9 @@ cluster:
       sshUser:
         placeholder: '例: ubuntu'
         toolTip: 選択したOSイメージでログインするためのSSHユーザー。
+    kubeconfigSecret:
+      nameRequired: Cluster name is required.
+      error: 'Error generating Harvester kubeconfig secret: {err}'
   haveOneOwner: 所有者ロールを持つメンバーが少なくとも1人必要です。
   import:
     warningBanner: '既に別のRancherインスタンスに接続されているクラスターをインポートしてはいけません。データの破損につながります。'
@@ -1931,6 +2044,21 @@ cluster:
       httpEndpoint: EC2メタデータへのアクセスを許可
       httpTokens: メタデータにトークンを使用
       tagTitle: EC2タグ
+      enableIpv6:
+        label: Enable IPv6
+        description: "Checking this automatically sets your <a aria-label='scroll to the networking section in cluster configuration' href=\"#networking\">Network Stack Preference Order</a> to <b>DUAL</b> stack, enabling both IPv4 and IPv6. For an IPv6-only cluster, you can manually change that setting to <b>IPv6</b>."
+      ipv6AddressCount:
+        label: IPv6 Address Count
+        tooltip: Specifies the number of IPv6 addresses to assign to the network interface
+        error: IPv6 Address Count must be greater than 0 when using an IPv6 vpc or subnet.
+      enablePrimaryIpv6:
+        label: Enable Static Primary Ipv6
+        description: This allows IPv6 communication for components and workloads.
+      ipv6AddressOnly:
+        label: Use IPv6 Only
+      httpProtocolIpv6:
+        label: Use IPv6 for instance metadata service
+      ipv6ValidationWarning: When one pool uses an IPv6 or dual-stack subnet/vpc, all pools must use an IPv6 or dual-stack subnet/vpc.
     pnap:
       serverLocation:
         label: ロケーション
@@ -1952,6 +2080,66 @@ cluster:
         label: ネットワーク
       serverOs:
         label: OS
+    gce:
+      machineImage:
+        label: Machine Image
+        option: '{name} - {description}'
+        deprecatedOption: '{name}(deprecated) - {description}'
+        tooltip: Please select Image Family to get available images
+      imageProjects:
+        label: Image Projects
+      firewall:
+        header: Firewall Configuration
+      showDeprecated:
+        label: Show Deprecated
+        tooltip: Includes deprecated images
+      diskType:
+        label: Disk Type
+      diskSize:
+        label: Disk Size
+      network:
+        label: Network
+      subnetwork:
+        label: Subnetwork
+      machineType:
+        label: Machine Type
+      family:
+        label: Image Family
+      location:
+        zone:
+          label: Zone
+      preemptible:
+        label: Make VM instance preemptible
+        tooltip: Preemptible machines offer significant cost savings, but may be abruptly stopped when Google Compute Engine needs to reclaim the compute resources for higher-priority VMs.
+      scopes:
+        add: Add scope
+        label: Scopes
+      tags:
+        add: Add tags
+        label: Tags
+      openPort:
+        add: Add port
+        label: Open Ports
+      address:
+        label: External Address
+        placeholder: '10.0.0.0/14'
+        tooltip: External IP address for the GCE VM instance.
+      username:
+        label: Username
+        placeholder: docker-user
+        tooltip: This is the username used when SSH'ing into the node, and not a username associated with the GCP account.
+      internalFirewall:
+        label: Allow communication between cluster nodes
+        tooltip: Allows Rancher to open ports required for internal communication between nodes.
+        banner: Tags can be used to impose additional firewall rules.
+      externalFirewall:
+        label: Expose external ports
+        tooltip: Allows Rancher to open ports required for external access.
+        banner: By default, the Kubernetes API server listens on port 6443. Exposing this port on control plane machine pools is required for the Authorized Cluster Endpoint feature to work as expected.
+      error:
+        diskSizeWithoutMax: Disk size has to be greater than {diskSizeMin} based on this image and disk type.
+        diskSizeWithMax: Disk size has to be between {diskSizeMin} and {diskSizeMax} based on this image and disk type.
+        projects: Image projects should be a comma separated list of alphanumeric string which may contain '-' and '.'
   addOns:
     dependencyBanner: アドオン構成はKubernetesのバージョンによって異なる場合があります。Kubernetesのバージョンを変更すると、以下の値がリセットされる場合があります。
     additionalManifest:
@@ -2024,23 +2212,13 @@ cluster:
       }
     rke1DeprecationMessage: 'Rancher Kubernetes Engine (RKE / RKE1)はサポート終了となり、これらのクラスターはサポートされなくなりました。引き続きサポートとセキュリティアップデートを確実にするために、RKE1クラスターをRKE2にリプラットフォームすることをお勧めします。移行の詳細については、<a href="https://www.suse.com/support/kb/doc/?id=000021518" target="_blank" rel="noopener noreferrer nofollow">こちら</a>をご覧ください。'
   rke1Unsupported: RKE1クラスターはサポートされなくなりました
-  cloudCredentials:
-    renew: クラウド認証情報を更新
-    expired: クラウド認証情報が期限切れです。クラウド認証情報を更新してください
-    expiring: クラウド認証情報は{expires}に期限切れになります。クラウド認証情報を更新してください
-    banners:
-      expiring: "{count} {count, plural, =1 { クラスターのクラウド認証情報が間もなく期限切れになります} other { クラスターのクラウド認証情報が間もなく期限切れになります}}。クラウド{count, plural, =1 { 認証情報} other { 認証情報}}を更新してください"
-      expired: "{count} {count, plural, =1 { クラスターのクラウド認証情報が期限切れになりました} other { クラスターのクラウド認証情報が期限切れになりました}}。クラウド{count, plural, =1 { 認証情報} other { 認証情報}}を更新してください"
-
   architecture:
     label:
       unknown: 不明
       mixed: 混在
-
   availabilityWarnings:
     node: ノード{name}は非アクティブです
     machine: マシン{name}は非アクティブです
-
   detail:
     provisioner: プロビジョナー
     kubernetesVersion: Kubernetesバージョン
@@ -2048,8 +2226,19 @@ cluster:
     machinePools: マシンプール
     machines: マシン
     rkeTemplate: RKEテンプレート
-
   machinePool:
+    automation:
+      label: Automation
+    autoscaler:
+      heading: Autoscaler
+      enable: Enable autoscaler and override "Machine Count" value
+      machineCountValueOverride: Controlled by autoscaler
+      baseUnit: Machines
+      min: Min
+      max: Max
+      validation:
+        isAutoscalerMaxGreaterThanMin: The max machines count must be equal or exceed the min machine count.
+      etcdControlPlaneWarning: We don't recommend using Autoscaler with machine pools that have the etcd or Control Plane roles. You can modify the yaml if you want to override the current value.
     name:
       label: プール名
       placeholder: デフォルトでランダムな名前が生成されます
@@ -2100,7 +2289,6 @@ cluster:
     noPoolsDisclaimer: マシンプールが定義されていません。プラスをクリックして追加してください。
     truncationPool: "このプールでは、ホスト名の切り捨てが手動で{limit}に設定されています"
     truncationCluster: "このクラスターでは、ホスト名の切り捨てが手動で{limit}に設定されています"
-
     autoReplace:
       label: 自動置換
       toolTip: 0より大きい場合、この期間到達不能なノードは自動的に削除され、置換されます。
@@ -2189,12 +2377,14 @@ cluster:
   providerGroup:
     create-custom1: 既存のノードを使用してRKEでクラスターを作成
     create-custom2: 既存のノードを使用してRKE2/K3sでクラスターを作成
-    create-kontainer: ホスト型Kubernetesプロバイダーにクラスターを作成
-    register-kontainer: ホスト型Kubernetesプロバイダーに既存のクラスターを登録
+    create-hosted: Create a cluster in a hosted Kubernetes provider
+    register-hosted: Register an existing cluster in a hosted Kubernetes provider
     create-rke1: 新しいノードをプロビジョニングし、RKEでクラスターを作成
     create-rke2: 新しいノードをプロビジョニングし、RKE2/K3sでクラスターを作成
     create-template: カタログテンプレートを使用してクラスターを作成
     register-custom: 任意のKubernetesクラスターをインポート
+    create-kontainer: ホスト型Kubernetesプロバイダーにクラスターを作成
+    register-kontainer: ホスト型Kubernetesプロバイダーに既存のクラスターを登録
   rke2:
     banner:
       psaChange: PSACTがRancherデフォルトに自動的に設定されました
@@ -2230,6 +2420,7 @@ cluster:
       server: サーバーコンプライアンスプロファイル
       agent: コンプライアンスプロファイル
       override: コンプライアンスプロファイルを使用する際に、デフォルトのPod Security Admission Configuration Templateが上書きされることを許可する
+      warning: After saving changes, and if this cluster has already been provisioned, please restart the rke2-server service on all nodes to ensure etcd file permissions are correct
     defaultPodSecurityPolicyTemplateName:
       label: デフォルトのPodセキュリティポリシー
       option: デフォルト - RKE2組み込み
@@ -2310,6 +2501,27 @@ cluster:
         true: パブリックインターフェースに公開
       s3backups:
         label: バックアップをS3に保存
+      s3config:
+        bucket:
+          label: Bucket
+        folder:
+          label: Folder
+        region:
+          label: Region
+        endpoint:
+          label: Endpoint
+        skipSSLVerify:
+          label: Accept any certificate (insecure)
+        endpointCA:
+          label: Endpoint CA Cert
+    stackPreference:
+      label: Stack Preference
+      description: "スタック設定（Stack preference）は、クラスターで使用されるネットワークスタックを決定します。選択された値は、calico、etcd、kube-apiserver、kube-scheduler、kube-controller-manager、および kubelet のヘルスチェック（health probe）およびレディネスチェック（readiness probe）に使用されるアドレスを構成します。また、認定クラスターエンドポイント（Authorized Cluster Endpoint）用の <code>authentication-token-webhook-config-file</code> 内のサーバー URL や、スナップショット復元時における etcd の advertise-client-urls も定義します。<code>dual</code> に設定した場合は <code>localhost</code> が、<code>ipv6</code> の場合は <code>[::1]</code> が、そして <code>ipv4</code> の場合は <code>127.0.0.1</code> が使用されます。"
+      options:
+        ipv4: IPv4
+        ipv6: IPv6
+        dual: Dual-Stack
+      errorNeedsIpv6: Stack preference must be set to dual-stack or ipv6 if using ipv6 networking in nodepools.
   k3s:
     systemService:
       coredns: 'CoreDNS'
@@ -2362,7 +2574,13 @@ cluster:
     v2: RKE2/K3s
   validation:
     iamInstanceProfileName: Amazonクラウドプロバイダーが選択されている場合、各マシンプールに「IAMインスタンスプロファイル名」を定義する必要があります
-
+  cloudCredentials:
+    renew: クラウド認証情報を更新
+    expired: クラウド認証情報が期限切れです。クラウド認証情報を更新してください
+    expiring: クラウド認証情報は{expires}に期限切れになります。クラウド認証情報を更新してください
+    banners:
+      expiring: "{count} {count, plural, =1 { クラスターのクラウド認証情報が間もなく期限切れになります} other { クラスターのクラウド認証情報が間もなく期限切れになります}}。クラウド{count, plural, =1 { 認証情報} other { 認証情報}}を更新してください"
+      expired: "{count} {count, plural, =1 { クラスターのクラウド認証情報が期限切れになりました} other { クラスターのクラウド認証情報が期限切れになりました}}。クラウド{count, plural, =1 { 認証情報} other { 認証情報}}を更新してください"
 clusterIndexPage:
   hardwareResourceGauge:
     consumption: "{total} {units}の{useful} {suffix}"
@@ -2422,7 +2640,6 @@ clusterIndexPage:
         unavailableReplicas: レプリカが利用できません
     certs:
       label: 証明書
-
 configmap:
   tabs:
     data:
@@ -2430,7 +2647,6 @@ configmap:
       protip: ここはUTF-8テキストデータ用です
     binaryData:
       label: バイナリデータ
-
 containerResourceLimit:
   cpuPlaceholder: '例: 1000'
   gpuPlaceholder: '例: 1'
@@ -2443,17 +2659,14 @@ containerResourceLimit:
   memPlaceholder: '例: 128'
   requestsCpu: CPU予約
   requestsMemory: メモリ予約
-
 resource:
   errors:
     update: "{name}の更新エラー"
-
 codeMirror:
   escapeText: Shift+Escapeを押してエディターからフォーカスを外す
   keymap:
     tooltip: キーマッピングの好み。
     indicatorToolip: "キーマッピング: {name}"
-
 cruResource:
   backToForm: フォームに戻る
   backBody: YAMLへの変更は失われます。
@@ -2464,10 +2677,15 @@ cruResource:
   reviewYaml: "YAMLの編集を続ける"
   previewYaml: YAMLとして編集
   showYaml: YAMLとして表示
-
+providers:
+  hosted:
+    title: Hosted Providers
+    prime: Prime only
+    warning: Disabling providers will make any clusters that use them uneditable
 drivers:
   kontainer:
     title: クラスタードライバー
+    emberDeprecationMessage: 'Support for UI Plugins (based on Ember) for cluster and node drivers was deprecated in Rancher 2.11.0 and will be removed in a future release. These need to be migrated to the new <a href="https://extensions.rancher.io" target="_blank" rel="noopener noreferrer nofollow">UI Extensions framework</a>.'
   node:
     title: ノードドライバー
   add:
@@ -2508,7 +2726,6 @@ drivers:
       }
   error:
     activate: '{name}ドライバーのアクティベーションに失敗しました'
-
 detailText:
   copyAriaLabel: '{item}の値をクリップボードにコピー'
   collapse: 非表示
@@ -2523,7 +2740,6 @@ detailText:
       =1 {+ 1文字追加}
       other {+ {n, number}文字追加}
     }
-
 drainNode:
   action: 'ドレイン'
   actionStop: 'ドレインを停止'
@@ -2544,17 +2760,41 @@ drainNode:
     default: 永久に再試行し続ける
     placeholder: '例: 60'
     custom: "諦めるまでの時間:"
-
+dynamicContent:
+  action:
+    close: 非表示にして、お知らせを既読にする
+    openPrimary: お知らせの主要なアクションを開く
+    openSecondary: お知らせのサブアクションを開く
+  newRelease:
+    title: Rancherの新しいリリースが利用可能です！
+    message: Rancher {version} がリリースされました！
+    moreInfo: リリースノート
+  multipleNewReleases:
+    title: Rancherの複数の新しいリリースが利用可能です！
+    message: 新しいパッチバージョン {version1} がリリースされました。また、より新しいバージョン {version2} も利用可能です。
+    moreInfo: "{version} リリースノート"
+  upcomingEom:
+    title: メンテナンス終了まであと {days, plural, =1 {1 日} other {{days} 日}}
+    message: このバージョンのRancher ({version}) は、あと {days} 日でメンテナンス終了となります。早めにサポートされているバージョンへのアップグレードを検討してください。
+  eom:
+    title: メンテナンス期間終了（End of Maintenance）
+    message: このバージョンのRancher ({version}) はメンテナンス期間が終了しました。サポートされているバージョンへのアップグレードをご検討ください。
+  upcomingEol:
+    title: サポート終了（End of Life）まであと {days, plural, =1 {1 日} other {{days} 日}}
+    message: このバージョンのRancher ({version}) はあと {days} 日でサポート終了 (End of Life) を迎えます。お早めにサポートされているバージョンへのアップグレードをご検討ください。
+  eol:
+    title: サポート終了 (End of Life)
+    message: このバージョンのRancher ({version}) はサポート終了 (End of Life) を迎えました。サポートされているバージョンへのアップグレードをご検討ください。
 etcdInfoBanner:
   hasLeader: "Etcdにリーダーが存在します:"
   leaderChanges: "リーダー変更数:"
   failedProposals: "失敗した提案数:"
-
 fleet:
   settings:
     label: Fleet
     title: Fleet設定
     info: Rancherは設定変更時にFleetエージェントとコントローラーを再起動します。
+    apply: 変更を適用
     noPermissions: Fleet設定を変更する権限がありません
     parseError: '"設定マップ"{id}"内の"{path}"から値を解析できません'
     fields:
@@ -2642,7 +2882,6 @@ fleet:
     developer:
       label: 開発者
       description: 'Fleetからのデバッグ情報を有効にする。'
-
   tableHeaders:
     applicationType: タイプ
     applicationSource: ソース
@@ -2671,6 +2910,7 @@ fleet:
       filters:
         gitRepos: Gitリポジトリを表示
         helmOps: Helm Opsを表示
+      search: Filter
       resourceSummary:
         part1: 内
         part2: |-
@@ -2728,6 +2968,7 @@ fleet:
     rules:
       title: ラベルで選択
       addSelector: クラスターセレクターを追加
+      labelKey: Label
       matching:
         title: 選択されたクラスター
         placeholder: 名前またはラベルでクラスターを検索
@@ -2802,7 +3043,7 @@ fleet:
       enableBundles: 設定ファイルのサブパスを手動で指定する（Fleetはfleet.yamlファイルを再帰的にスキャンしません）
       subpaths:
         addLabel: サブパスを追加
-        protipValue: "フォルダ内のfleet YAMLファイルの名前"
+        protipValue: 'フォルダ内のfleet YAMLファイルの名前'
         props:
           base: サブパス
           options: Fleet YAMLファイル (オプション)
@@ -2829,6 +3070,7 @@ fleet:
         label: ポーリング間隔
         tooltip: ポーリング間隔は、リポジトリへのプッシュからFleetの反応までの時間です。
         webhookWarning: Gitの更新とGitRepoリソースを調整するために、RancherにWebhookが構成されています。ポーリング間隔は自動的に1時間に調整されます。
+        minimumValueWarning: The recommended minimum Polling Interval is 15 seconds. To avoid performance issues with GitRepos that contain a large amount of resources please consider increasing this value.
         minimumValuewarning: 推奨される最小ポーリング間隔は15秒です。大量のリソースを含むGitRepoでパフォーマンスの問題を避けるために、この値を増やすことを検討してください。
     ociStorageSecret:
       title: OCIレジストリ
@@ -3036,6 +3278,8 @@ fleet:
       pollingInterval:
         label: ポーリング間隔
         tooltip: ポーリング間隔は、リポジトリへのプッシュからFleetの反応までの時間です。
+        minimumValueWarning: ポーリング間隔の最小推奨値は 15 秒です。大量のリソースを含む HelmOps でのパフォーマンス低下を避けるため、この値を大きくすることを検討してください。
+        versionTooltip: "ポーリングを有効にできるのは、バージョンが有効なセマンティック バージョニングの制約（例: 2.x.x、< 1.0）である場合のみです。"
         minimumValuewarning: 推奨される最小ポーリング間隔は15秒です。大量のリソースを含むGitRepoでパフォーマンスの問題を避けるために、この値を増やすことを検討してください。
     tls:
       insecure: いずれの証明書も受け入れる (安全ではない)
@@ -3074,18 +3318,19 @@ fleet:
   restrictions:
     addTitle: 'allowedTargetNamespaces'
     addLabel: 追加
-    banner: "{count, plural,
-          =0 { ここにネームスペースを追加すると、GitRepoRestrictionが作成されます。 }
-          other { Git Repo Restrictionの<code>allowedTargetNamespaces</code>のみがここで管理されます。Git Repo Restrictionにさらに変更を加えることができます。}
-        }"
+    banner: "{count, plural, =0 { ここにネームスペースを追加すると、GitRepoRestrictionが作成されます。 } other { Git Repo Restrictionの<code>allowedTargetNamespaces</code>のみがここで管理されます。Git Repo Restrictionにさらに変更を加えることができます。} }"
+  configMaps:
+    label: Config Maps
+  secrets:
+    label: Secrets
 footer:
   docs: ドキュメント
   download: CLIをダウンロード
   forums: フォーラム
   issue: イシューを報告
   slack: Slack
-
 gatekeeperConstraint:
+  templateRequired: You must have at least one Template before attempting to create a Constraint.
   downloadViolations: 違反をダウンロード
   match:
     title: 一致
@@ -3119,18 +3364,15 @@ gatekeeperConstraint:
   violations:
     title: "違反: {total}"
     notAll: 設定されたOPA Gatekeeper制約違反制限により、すべては表示されていません - 制約には{shown}の詳細のみが含まれています。
-
 gatekeeperIndex:
   poweredBy: OPA Gatekeeper
   unavailable: OPA + Gatekeeperはシステムチャートカタログでは利用できません。
   violations: 違反
   deprecated: OPA GatekeeperチャートはRancher 2.8で非推奨となり、将来のリリースで削除されます。<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.kubewarden.io">Kubewarden</a>への切り替えをご検討ください。
-
 gatekeeperInstall:
   auditInterval: 自動間隔
   constraintViolationsLimit: 制約違反制限
   runtimeDefaultSeccompProfile: ランタイムデフォルトSeccompプロファイルを有効にする
-
 glance:
   created: 作成済み
   cpu: CPU使用率
@@ -3151,7 +3393,9 @@ glance:
   clusterInfo: クラスター情報
   eventsTable: 全イベントリスト
   secretsTable: 全シークレットリスト
-
+  changeEventsListRowCount: Update events table row count
+  showXEvents: Show {count} events
+  useUserPreference: "Use table preference ({count})"
 clusterBadge:
   badgeAppearance: クラスターバッジの外観
   clusterComment: "クラスターコメント - {text}"
@@ -3174,18 +3418,15 @@ clusterBadge:
     previewTitle: "プレビュー:"
     previewSide: "サイドナビゲーション"
     previewHeader: "RANCHERヘッダー"
-
 grafanaDashboard:
   failedToLoad: グラフの読み込みに失敗しました
   reload: 再読み込み
   grafana: Grafana
-
 graphOptions:
   detail: 詳細
   summary: 概要
   refresh: 更新
   range: 範囲
-
 growl:
   clearAll: すべての通知をクリア
   disconnectError:
@@ -3203,7 +3444,6 @@ growl:
   kubeApiHeaderWarning:
     titleCreate: "{resourceType}作成警告"
     titleUpdate: "{resourceType}更新警告"
-
 hpa:
   detail:
     currentMetrics:
@@ -3288,7 +3528,6 @@ hpa:
     max: 最大レプリカ
     min: 最小レプリカ
     targetReference: ターゲット参照
-
 import:
   title: YAMLをインポート
   editor:
@@ -3300,7 +3539,6 @@ import:
     =1 {1つのリソース}
     other {#つのリソース}
     }が適用されました
-
 ingress:
   description: Ingressは、要求で指定されたホスト名とパスに基づいて、インターネットからの着信トラフィックをクラスター内のサービスにルーティングします。同じ外部IPアドレスとポートで複数のサービスを公開できます。
   certificates:
@@ -3364,12 +3602,11 @@ ingress:
   target:
     default: デフォルト
   rulesOrBackendSpecified: デフォルトバックエンドまたはルールのいずれかを指定する必要があります
-
 internalExternalIP:
   none: なし
   copyInternalIp: 内部IPアドレスをクリップボードにコピー
   copyExternalIp: 外部IPアドレスをクリップボードにコピー
-
+  clickToShowMoreIps: "Click to show {count} more {count, plural, one {IP} other {IPs}}"
 istio:
   links:
     kiali:
@@ -3546,7 +3783,6 @@ istio:
     description: 説明
   tracing: Jaeger Tracingを有効にする (制限付き)
   v1Warning: このバージョンをインストールする前に、<code>istio-system</code>名前空間の現在のIstioバージョンをアンインストールしてください。
-
 itemCard:
   ariaLabel:
     clickable: Click on card for {cardTitle}
@@ -3563,8 +3799,6 @@ jwt:
     clusterName: クラスター名
     updatedOn: JWTが有効になった日時
     clusterAge: クラスターの経過時間
-
-
 labels:
   addLabel: ラベルを追加
   addSetLabel: ラベルを追加/設定
@@ -3581,7 +3815,6 @@ labels:
   annotations:
     title: アノテーション
     singular: アノテーション
-
 labelSelect:
   noOptions:
     empty: オプションなし
@@ -3592,12 +3825,16 @@ labelSelect:
 labeledSelect:
   startTyping: 項目を定義するために入力してください
   pressEnter: Enterを押して"{input}"を追加
-
 landing:
   bannerImage: ホームページバナー画像
   homepage: ホームページ
   clusters:
     title: クラスター
+    tooMany:
+      showAll: Show all clusters (may increase load time)
+      showSome: Show some clusters (may improve load time)
+      showingAll: Showing {total} clusters.
+      showingSome: Showing {rows} of {total} recently created clusters.
     provider: プロバイダー
     distro: ディストリビューション
     kubernetesVersion: Kubernetesバージョン
@@ -3631,7 +3868,6 @@ landing:
       lastVisited: 最後にアクセスしたエリアに移動します
       custom: "クラスターに移動します"
   welcomeToRancher: '{vendor} へようこそ'
-
 logging:
   clusterFlow:
     noOutputsBanner: 選択した名前空間にクラスター出力がありません。
@@ -3668,7 +3904,6 @@ logging:
           include: 特定のネームスペースに限定
           exclude: 特定のネームスペースを除外
         placeholder: "デフォルト: すべてのネームスペース"
-
     filters:
       label: フィルター
     outputs:
@@ -3760,7 +3995,7 @@ logging:
     secretKey: シークレットからの秘密鍵
   azurestorage:
     storageAccount: シークレットからのアカウント
-    accessKey:  シークレットからのアクセスキー
+    accessKey: シークレットからのアクセスキー
     container: コンテナ
     path: パス
     storeAs: 格納形式
@@ -3846,7 +4081,6 @@ logging:
     tips:
       singleProvider: この出力は複数のプロバイダーで構成されています。現在、出力ごとに単一のプロバイダーのみをサポートしています。YAMLを表示または編集できます。
       multipleProviders: この出力は、まだサポートしていないプロバイダーで構成されています。YAMLを表示または編集できます。
-translation:
   outputProviders:
     elasticsearch: Elasticsearch
     opensearch: OpenSearch
@@ -3857,47 +4091,46 @@ translation:
     gelf: GELF
     loki: Loki
     awsElasticsearch: Amazon Elasticsearch
-    azurestorage: Azureストレージ
+    azurestorage: Azure Storage
     cloudwatch: Cloudwatch
     datadog: Datadog
-    file: ファイル
+    file: File
     gcs: GCS
-    kinesisStream: Kinesisストリーム
+    kinesisStream: Kinesis Stream
     logdna: LogDNA
     logz: LogZ
     newrelic: New Relic
     sumologic: SumoLogic
     syslog: Syslog
     s3: S3
-    unknown: 不明
+    unknown: Unknown
   overview:
     poweredBy: Banzai Cloud
-    clusterLevel: クラスターレベル
-    namespaceLevel: Namespaceレベル
-  provider: プロバイダー
+    clusterLevel: Cluster-Level
+    namespaceLevel: Namespace-Level
+  provider: Provider
   splunk:
-    host: ホスト
-    port: ポート
-    protocol: プロトコル
-    index: インデックス
-    token: Secretからのトークン
-    insecureSsl: 安全でないSSL
-    indexName: インデックス名
-    source: ソース
-    caFile: SecretからのCAファイル
-    caPath: SecretからのCAパス
-    clientCert: Secretからのクライアント証明書
-    clientKey: Secretからのクライアントキー
+    host: Host
+    port: Port
+    protocol: Protocol
+    index: Index
+    token: Token from Secret
+    insecureSsl: Insecure SSL
+    indexName: Index Name
+    source: Source
+    caFile: CA File from Secret
+    caPath: CA Path from Secret
+    clientCert: Client Cert from Secret
+    clientKey: Client Key from Secret
   forward:
-    host: ホスト
-    port: ポート
-    sharedKey: Secretからの共有キー
-    username: Secretからのユーザー名
-    password: Secretからのパスワード
-    clientCertPath: Secretからのクライアント証明書パス
-    clientPrivateKeyPath: Secretからのクライアント秘密鍵パス
-    clientPrivateKeyPassphrase: Secretからのクライアント秘密鍵パスフレーズ
-
+    host: Host
+    port: Port
+    sharedKey: Shared Key from Secret
+    username: Username from Secret
+    password: Password from Secret
+    clientCertPath: Client Cert Path from Secret
+    clientPrivateKeyPath: Client Private Key Path from Secret
+    clientPrivateKeyPassphrase: Client Private Key Passphrase from Secret
 longhorn:
   overview:
     title: 概要
@@ -3908,7 +4141,6 @@ longhorn:
         description: 'UIを介してストレージシステムを管理'
         na: リソース利用不可
         uiServiceUnavailable: Longhorn UIサービスが利用できないか、アクセス権がありません。
-
 neuvector:
   overview:
     title: 概要
@@ -3918,13 +4150,13 @@ neuvector:
         label: 'NeuVector'
         description: 'フルライフサイクルコンテナセキュリティ'
         na: リソース利用不可
-
 login:
   login: ログイン
   howdy: こんにちは！
   welcome: '{vendor}へようこそ'
   landscapeAlt: 風景画像
   loggedOut: ログアウトしました。
+  loggedOutSessionIdle: You've been logged out of Rancher because your session has expired. Log in again to continue.
   loggedOutFromSso: Rancherからログアウトしましたが、シングルサインオンIDプロバイダーにはまだログインしている可能性があります。
   loggedOutFromSlo: RancherとシングルサインオンIDプロバイダーからログアウトしました。
   loginAgain: 続行するには再度ログインしてください。
@@ -3950,17 +4182,19 @@ login:
   useNonLocal: 非ローカルユーザーを使用する
   remember:
     label: ユーザー名を記憶する
-
+  cli:
+    welcome: Login to complete CLI authentication
+    invalidParams: Invalid login parameters - can not login
+    warning: 'If you did not initiate this request or the "Client Request Id" shown in your terminal does not match the code shown below, do not continue'
+    warningLegacy: 'If you did not initiate this request or the code shown below does not match the "requestId" parameter shown as part of the login url in your terminal, do not continue'
 logout:
   message: ログアウト中...
   error: 'ログアウト中にエラーが発生しました: {msg}'
   specificError:
     unknown: 不明。\n\nシステム管理者に連絡してください。
     500: "サーバー側エラー。\n\nシステム管理者に連絡してください。"
-
 managementNode:
   customName: カスタム名
-
 members:
   clusterMembers: クラスターメンバー
   memberRoles: メンバーロール
@@ -3995,12 +4229,10 @@ members:
       lockedRole: このロールはロックされています。
   localClusterWarning: "注意: これはRancherがデータストアとして使用しているクラスターです。このクラスターへの書き込みアクセスは管理者のみに与えるべきです。このクラスターへの書き込みアクセス権を持つユーザーは、それを使用してこのインストールの任意の部分へのアクセス権を自分自身に付与できます。"
   noRolesAssigned: このプロジェクトにはユーザーが割り当てられていません。
-
 membershipEditor:
   label: メンバー
   user: ユーザー
   role: ロール
-
 monitoring:
   accessModes:
     many: ReadWriteMany
@@ -4201,7 +4433,6 @@ monitoring:
     prometheus: Prometheus
     projectMetrics: プロジェクトメトリクス
   v1Warning: 'Monitoringは現在、クラスターマネージャーからデプロイされています。監視が有効になっている古いバージョンの{vendor}から移行する場合は、新しい{vendor} Monitoringチャートをクラスターエクスプローラーにインストールする前に、クラスターマネージャーで監視を無効にしてください。'
-
 monitoringReceiver:
   addButton: '{type}を追加'
   custom:
@@ -4260,7 +4491,6 @@ monitoringReceiver:
       placeholder: 例：http://my-proxy/
     sendResolved:
       label: 解決済みアラートの送信を有効にする
-
 alertmanagerConfigReceiver:
   secretKeyId: SecretからのキーID
   name: レシーバー名
@@ -4300,13 +4530,11 @@ monitoringRoute:
     label: 繰り返し間隔
   wait:
     label: グループ待機時間
-
 moveModal:
   title: 新しいプロジェクトに移動しますか？
   description: '次の名前空間を移動しています：'
   moveButtonLabel: 移動
   targetProject: ターゲットプロジェクト
-
 nameNsDescription:
   name:
     label: 名前
@@ -4320,7 +4548,6 @@ nameNsDescription:
   description:
     label: 説明
     placeholder: このリソースをよりよく説明するための任意のテキスト
-
 namespace:
   cancelCreateAriaLabel: 名前空間の作成をキャンセル
   containerResourceLimit: コンテナリソース制限
@@ -4342,16 +4569,15 @@ namespace:
     label: スナップショット
     totalSnapshotSize: 合計スナップショットサイズ
   resourceStates:
-      success: 'アクティブ'
-      info: '移行中'
-      warning: '警告'
-      error: 'エラー'
-      unknown: '不明'
-      paused:
-        stateName: '非アクティブ'
-        shortDescription: デプロイメントは一時停止されています
-        longDescription: デプロイメントは一時停止されています。一時停止すると、コントローラーはリビジョンのデプロイを停止します。
-
+    success: 'アクティブ'
+    info: '移行中'
+    warning: '警告'
+    error: 'エラー'
+    unknown: '不明'
+    paused:
+      stateName: '非アクティブ'
+      shortDescription: デプロイメントは一時停止されています
+      longDescription: デプロイメントは一時停止されています。一時停止すると、コントローラーはリビジョンのデプロイを停止します。
 namespaceFilter:
   noMatchingOptions: 一致するオプションがありません
   more: "+{more}"
@@ -4365,11 +4591,10 @@ namespaceFilter:
   button:
     clear: 適用されたNamespaceフィルターを削除
     clearFilter: Namespaceオプションフィルターをクリア
-
+  removeNamespace: 'Remove {name} from filter'
 namespaceList:
   selectLabel: Namespace
   addLabel: Namespaceを追加
-
 navLink:
   name:
     label: 名前
@@ -4499,7 +4724,6 @@ networkpolicy:
           =1 {{totalNamespaces, number}個のNamespaceのうち1個: "{sampleNamespaces}"}
           other {{totalNamespaces, number}個の既存Namespaceのうち{matchedNamespaces, number}個（"{sampleNamespaces}"を含む）}
         }
-
 node:
   list:
     pool: プール
@@ -4555,7 +4779,6 @@ node:
     downloadNodeConfig: キーをダウンロード
     scaleDown: スケールダウン
     forceDelete: 強制削除
-
 notificationCenter:
   caughtUp: "すべて既読です！"
   dates:
@@ -4566,7 +4789,6 @@ notificationCenter:
   markUnread: 未読にする
   title: 通知
   ariaLabel: '通知 {title}: Enterキーを押して操作'
-
 persistentVolume:
   pluginConfiguration:
     label: プラグイン設定
@@ -4883,7 +5105,6 @@ persistentVolume:
       placeholder: 例：ext4
     readOnly:
       label: 読み取り専用
-
 persistentVolumeClaim:
   name: Persistent Volume Claim名
   accessModes: アクセスモード
@@ -4921,7 +5142,6 @@ persistentVolumeClaim:
       readWriteMany: 複数ノード読み書き
   status:
     label: ステータス
-
 podDisruptionBudget:
   budget:
     label: 予算
@@ -4929,17 +5149,15 @@ podDisruptionBudget:
     label: 最小利用可能Pod数
   maxUnavailable:
     label: 最大利用不可Pod数
-
 inactivity:
   title: セッションがまもなく期限切れになります
-  titleExpired: セッションの有効期限が切れました
   banner: 非アクティブのため、セッションがまもなく期限切れになります。保存されていない変更は失われます。
-  bannerExpired: 非アクティブのため、このタブのセッションの有効期限が切れました。
   content: このタブのセッションをアクティブに保つには「セッションを再開」をクリックするか、セッションの有効期限が切れた後にブラウザを更新してください。
-  contentExpired: このページに戻るには、下の「更新」をクリックするか、ブラウザを更新してください。
   cta: セッションを再開
+  titleExpired: セッションの有効期限が切れました
+  bannerExpired: 非アクティブのため、このタブのセッションの有効期限が切れました。
+  contentExpired: このページに戻るには、下の「更新」をクリックするか、ブラウザを更新してください。
   ctaExpired: 更新
-
 # Rancher Extensions
 plugins:
   altIcon: '{extension} 拡張機能カードのアイコン'
@@ -4958,13 +5176,18 @@ plugins:
     image: イメージ
     installing: インストール中 ...
     uninstalling: アンインストール中 ...
+    upgrading: Upgrading ...
+    downgrading: Downgrading ...
     menu: 拡張機能メニュー
     reloadRancher: Rancherをリロード
+    current: current
   descriptions:
     experimental: この拡張機能は実験的としてマークされています
     third-party: この拡張機能はサードパーティによって提供されています
     built-in: この拡張機能は組み込みです
     image: この拡張機能イメージは手動でロードされました
+  tooltips:
+    installing: Installing...
   error:
     title: 拡張機能の読み込みエラー
     message: 拡張機能コードを読み込めませんでした
@@ -4988,6 +5211,8 @@ plugins:
       name: 拡張機能モジュール名
       persist: カスタムリソースを作成して拡張機能を永続化する
   info:
+    actions: アクション
+    noActions: 利用可能なアクションはありません
     detail: 詳細
     versions: バージョン
     versionError: バージョン情報を読み込めませんでした
@@ -5063,14 +5288,14 @@ plugins:
     prompt: "この拡張機能をインストールしてもよろしいですか？"
     version: バージョン
     warnNotCertified: 信頼できない作成者からの拡張機能をインストールするリスクを認識していることを確認してください
-  update:
-    label: 更新
-    title: 拡張機能{name}を更新
-    prompt: "この拡張機能を更新してもよろしいですか？"
-  rollback:
-    label: ロールバック
-    title: 拡張機能{name}をロールバック
-    prompt: "この拡張機能をロールバックしてもよろしいですか？"
+  upgrade:
+    label: アップグレード
+    title: 拡張機能 {name} をアップグレード
+    prompt: "この拡張機能をアップグレードしてもよろしいですか？"
+  downgrade:
+    label: ダウングレード
+    title: 拡張機能 {name} をダウングレード
+    prompt: "この拡張機能をダウングレードしてもよろしいですか？"
   uninstall:
     label: アンインストール
     title: "拡張機能のアンインストール: {name}"
@@ -5117,6 +5342,14 @@ plugins:
       crd:
         title: Rancher拡張機能カスタムリソース定義を削除
         prompt: 1つ以上の拡張機能がインストールされています - CRDを削除すると、後で拡張機能サポートを再度有効にする場合にこれらの拡張機能を手動で再インストールする必要があります。
+  update:
+    label: 更新
+    title: 拡張機能{name}を更新
+    prompt: "この拡張機能を更新してもよろしいですか？"
+  rollback:
+    label: ロールバック
+    title: 拡張機能{name}をロールバック
+    prompt: "この拡張機能をロールバックしてもよろしいですか？"
 podSecurityAdmission:
   name: Podセキュリティアドミッション
   description: Podセキュリティに使用するアドミッション制御モードを定義します
@@ -5187,7 +5420,6 @@ prefs:
   confirmationSetting:
     title: 確認設定
     scalingDownPrompt: ノードプールをスケールダウンするときに確認を求めない。
-
 principal:
   loading: 読み込み中&hellip;
   error: プリンシパル情報を取得できません
@@ -5196,7 +5428,6 @@ principal:
   type: タイプ
   alt:
     avatar: ユーザーアバター画像
-
 probe:
   checkInterval:
     label: チェック間隔
@@ -5229,7 +5460,6 @@ probe:
   type:
     label: タイプ
     placeholder: チェックタイプを選択してください
-
 project:
   membersEditOnly: 現在のユーザーの権限以下の権限のみ適用できます
   members:
@@ -5238,8 +5468,6 @@ project:
   vmDefaultResourceLimit: VMのデフォルトリソース制限
   resourceQuotas: リソースクォータ
   haveOneOwner: オーナーロールを持つメンバーが少なくとも1人必要です。
-
-
 projectMembers:
   project:
     label: プロジェクト
@@ -5280,7 +5508,6 @@ projectMembers:
     servicesView: Serviceを表示
     persistentvolumeclaimsView: ボリュームを表示
     workloadsView: ワークロードを表示
-
 projectNamespaces:
   tableActionsLabel: プロジェクト{resource}のその他のアクション
   createNamespace: Namespaceを作成
@@ -5289,7 +5516,6 @@ projectNamespaces:
   noNamespaces: 定義されているNamespaceはありません。
   noProjectNoNamespaces: すべてのNamespaceがプロジェクト内にあります
   isIstioInjectionEnabled: このNamespaceではIstioの自動サイドカーインジェクションが有効になっています
-
 prometheusRule:
   alertingRules:
     addLabel: アラートを追加
@@ -5343,7 +5569,6 @@ prometheusRule:
     labels: ラベル
     name: 時系列名
     removeRecord: レコードを削除
-
 promptForceRemove:
   modalTitle: よろしいですか？
   removeWarning: "基盤となるインフラストラクチャの削除に問題がありました。この操作を続行すると、マシン<b>{nameToMatch}</b>はRancherからのみ削除されます。参照されているインフラストラクチャを手動で削除することを強くお勧めします。"
@@ -5351,12 +5576,10 @@ promptForceRemove:
   ariaLabel: マシン名をクリップボードにコピー
   confirmName: "確認のために以下のプール名を入力してください："
   podRemoveWarning: "Podの強制削除は、Podのプロセスが終了したことの確認を待ちません。これにより、<strong>データの破損や不整合</strong>が発生する可能性があります"
-
 promptScaleMachineDown:
   attemptingToRemove: "{count}個の{type}を削除しようとしています"
   retainedMachine1: コントロールプレーンおよびEtcdロールには、少なくとも1台のマシンが存在する必要があります。
   retainedMachine2: <b>{ name }</b> は残ります
-
 promptSlo:
   title: "ログアウト"
   text: "Rancherのみからログアウトするか、すべての{name}アプリケーションからログアウトします。"
@@ -5365,7 +5588,6 @@ promptSlo:
   all:
     active: '{name}からログアウト'
     waiting: ログアウト中
-
 promptRemove:
   title: よろしいですか？
   andOthers: |-
@@ -5382,10 +5604,8 @@ promptRemove:
   willDeleteAssociatedNamespaces: "これにより、プロジェクト内のすべての名前空間も削除されます: "
   confirmRelatedResource: "{type}を削除すると、この特定の{type}上のすべてのリソースが削除され、元に戻すことはできません。{names}の削除を続行してもよろしいですか？"
   promptConfirmation: "スケールダウン時に再度確認を求めないでください。"
-
 promptRemoveApp:
   removeCrd: "このアプリに関連付けられたCRDを削除する"
-
 promptRestore:
   title: スナップショットの復元
   name: 名前
@@ -5396,7 +5616,6 @@ promptRestore:
   notification:
     title: スナップショットの復元
     message: スナップショット{selectedSnapshot}の復元が開始されました...
-
 promptRollback:
   modalTitle: '{workloadName}をロールバック'
   dropdownTitle: リビジョンにロールバック
@@ -5407,22 +5626,18 @@ promptRollback:
   currentLabel: "(現在)"
   multipleWorkloadError: "一度にロールバックできるワークロードは1つだけです。"
   singleRevisionBanner: ロールバックするリビジョンはありません。
-
 promptRedeploy:
   title: '{type}を再デプロイしますか？'
   attemptingToRedeploy: "{type} {names}を再デプロイしようとしています<br><br>再デプロイすると、選択したワークロードが再起動され、一時的なダウンタイムが発生する可能性があります。"
-
 promptRotateEncryptionKey:
   title: 暗号化キーのローテーション
   description: 最後のバックアップ{name}は{date}に実行されました
   warning: 続行する前に、クラスターのETCDバックアップが正常に完了したことを確認してください。
   error: バックアップが見つかりません
-
 rancherAlertingDrivers:
   msTeams: Microsoft Teamsを有効にする
   sms: SMSを有効にする
   selectOne: 以下のオプションの少なくとも1つを選択する必要があります。
-
 rbac:
   roleBinding:
     noData: このリソースに関連付けられているメンバーはいません。
@@ -5510,7 +5725,7 @@ rbac:
         label: 組み込み
         description: より詳細な権限モデルを定義するための追加ロール。
     unknownRole:
-        description: 説明が提供されていません
+      description: 説明が提供されていません
     assignOnlyRole: このロールは既に割り当てられています
     role:
       admin:
@@ -5576,7 +5791,6 @@ rbac:
         label: RKEテンプレートリビジョンを作成
   errors:
     escalation: 自分よりも高いグローバル権限を割り当てることはできません。割り当てようとしている権限を確認してください。
-
 resourceDetail:
   detailTop:
     annotations: アノテーション
@@ -5613,7 +5827,6 @@ resourceDetail:
       favoriteAction: '{resource}をお気に入りリストに追加'
       unfavoriteAction: '{resource}をお気に入りリストから削除'
     age: 経過時間
-    createdBy: 作成者
     restartCount: Pod再起動回数
     defaultBannerMessage:
       error: このリソースは現在エラー状態ですが、詳細なメッセージはありません。
@@ -5632,6 +5845,7 @@ resourceDetail:
       この{type}は{hasName, select,
         no {{managedBy}アプリ}
         yes {{managedBy}アプリ{appName}}}によって管理されています。ここで行われた変更は、次回{managedBy}が実行されるときに上書きされる可能性が高いです。
+    createdBy: 作成者
 resourceList:
   head:
     create: 作成
@@ -5642,7 +5856,6 @@ resourceList:
   nsFilterToolTip: "フィルタリングはプロジェクトと名前空間に制限されています"
 resourceLoadingIndicator:
   loading: 読み込み中
-
 resourceTable:
   groupBy:
     none: フラットリスト
@@ -5669,18 +5882,17 @@ resourceTable:
     node: "<span>ノード:</span> {name}"
   autoRefresh:
     label: 自動更新
-
 resourceTabs:
   conditions:
     tab: 条件
   events:
     tab: 最近のイベント
+    namespaceTab: "Events in Namespace"
+    namespaceCaption: "Shows all events from resources in <span class='namespace-name'><b>{namespace}</b></span> namespace"
   related:
     tab: 関連リソース
     from: 参照元
     to: 参照先
-
-
 resourceYaml:
   errors:
     namespaceRequired: このリソースは名前空間に属しているため、名前空間を指定する必要があります。
@@ -5691,7 +5903,6 @@ resourceYaml:
     hideDiff: 差分を非表示
     unified: 統合
     split: 分割
-
 secret:
   authentication: 認証
   certificate:
@@ -5735,13 +5946,12 @@ secret:
     knownHostsPlaceholder: "既知のホストのメタデータ、1行に1つ"
     editKnownHosts:
       title: SSH既知のホスト設定
-      entries:  |-
+      entries: |-
         {entries, plural,
           =0 {空}
           =1 {1エントリ}
           other {{entries}エントリ}
         }
-
   serviceAcct:
     ca: CA証明書
     token: トークン
@@ -5801,7 +6011,6 @@ secret:
     projectScoped:
       label: プロジェクトスコープ
       create: プロジェクトスコープのSecretを作成
-
 selectOrCreateAuthSecret:
   label: 認証
   options:
@@ -5827,14 +6036,12 @@ selectOrCreateAuthSecret:
   createBasic: HTTP Basic認証Secretを作成
   createS3: S3互換認証Secretを作成
   createRKE: RKE認証設定Secretを作成
-
 serviceAccount:
   automount: Service Accountトークンを自動マウント
   imagePullSecrets: イメージプルシークレット
   tabs:
     serviceAccount:
       label: Service Account
-
 servicePorts:
   header:
     label: ポートルール
@@ -5853,14 +6060,12 @@ servicePorts:
     target:
       label: ターゲットポート
       placeholder: 例：80 または http
-
 serviceTypes:
   clusterip: Cluster IP
   externalname: 外部名
   headless: Headless
   loadbalancer: ロードバランサー
   nodeport: ノードポート
-
 servicesPage:
   serviceListDescription: サービスを使用すると、単一のIPアドレスとポートでアクセスできるPodの論理的なセットを定義できます。
   targetPorts: サービスはこのポートにリクエストを送信し、選択されたPodはこのポートでリッスンすることが期待されます。
@@ -5894,7 +6099,6 @@ servicesPage:
       label: IPAMを使用
     shareIP:
       label: 共有IP LB
-
   ips:
     define: サービスポート
     clusterIpHelpText: Cluster IPアドレスは、APIサーバー用に設定されたCIDR範囲内にある必要があります。
@@ -5950,7 +6154,6 @@ servicesPage:
       label: ノードポート
   typeOpts:
     label: サービスタイプ
-
 setup:
   currentPassword: ブートストラップパスワード
   confirmPassword: 新しいパスワードの確認
@@ -5973,7 +6176,6 @@ setup:
   useRandom: ランダムに生成されたパスワードを使用
   copyRandom: ランダムなパスワードをクリップボードにコピー
   welcome: '{vendor}へようこそ！'
-
 sortableTable:
   ariaLabel:
     firstPageBtn: 結果の最初のページ
@@ -6024,7 +6226,6 @@ sortableTable:
     noFilter: この列はフィルタリングできません
     groupBy: グループ化
     show: 表示
-
 storageClass:
   actions:
     setAsDefault: デフォルトとして設定
@@ -6322,9 +6523,9 @@ storageClass:
       label: ホストストレージクラス
       placeholder: ホストHarvesterクラスタ上のストレージクラス名
       tooltip: デフォルトでは、ホストHarvesterクラスタのデフォルトストレージクラスが使用されます。
-
 tableHeaders:
   assuredConcurrencyShares: 保証された並行性共有
+  autoscaler: Autoscaler
   accessKey: アクセスキー
   addressType: アドレスタイプ
   accessModes: アクセスモード
@@ -6334,7 +6535,6 @@ tableHeaders:
   apikey: APIキー
   available: 利用可能
   attachedVM: 接続されたVM
-
   authRoles:
     globalDefault: 新規ユーザーのデフォルト
     clusterDefault: クラスタ作成者のデフォルト
@@ -6382,13 +6582,16 @@ tableHeaders:
   endpoints: エンドポイント
   expires: 有効期限
   firstSeen: 初回確認日時
+  firstSeenTooltip: The time at which the event was first recorded
   flow: フロー
   fingerprint: フィンガープリント
   gitRepos: Gitリポジトリ
+  helmOps: Helm Ops
   groups: グループ
   groupName: グループ名
   groupRoleNames: グループロール名
   global-Default: グローバルデフォルト
+  helmOpsReady: Helm Ops Ready
   host: ホスト
   hostIp: ホストIP
   holder: ホルダー
@@ -6501,6 +6704,11 @@ tableHeaders:
   scope: スコープ
   selector: セレクター
   secrets: Secret
+  secret:
+    project-clone: Created by Project Secret
+    project-clone-tooltip: Has a Project Scoped Secret created this Secret in this Namespace
+    project-scoped: Project Secret
+    project-scoped-tooltip: This Project Scoped Secret will create matching Secrets in the Namespaces it contains
   schedule: スケジュール
   service: サービス
   serviceAccounts: サービスアカウント
@@ -6561,7 +6769,6 @@ target:
   version:
     label: バージョン
     placeholder: バージョンを選択
-
 user:
   state:
     active: '有効'
@@ -6680,8 +6887,8 @@ validation:
   flowOutput:
     both: "「出力」または「クラスタ出力」の選択が必要です。"
     global: "「クラスタ出力」の選択が必要です。"
-  git:
-    url: URLは末尾にスペースのないHTTP(s)またはSSH URLでなければなりません
+  repository:
+    url: It must be a valid HTTP(s) or SSH URL with no trailing spaces
   oci:
     url: URLは末尾にスペースのないOCI URLでなければなりません
   output:
@@ -6750,6 +6957,7 @@ validation:
       missingApiGroup: 各リソース付与に対してAPIグループを指定する必要があります
       missingOneResource: 各リソース付与に対して少なくとも1つのリソース、非リソースURL、またはAPIグループを指定する必要があります
       noResourceAndNonResource: 各ルールにはリソースまたは非リソースURLのいずれかを含めることができますが、両方を含めることはできません
+  semanticVersion: Version must be a valid version number or a semantic versioning constraint (e.g. 2.x.x, < 1.0)
   service:
     externalName:
       none: ExternalNameサービスには外部名が必要です。
@@ -6774,6 +6982,7 @@ validation:
       localhost: サーバーURLがRancherサーバーの内部（例：localhost）にある場合、下流のクラスタはRancherと通信できない可能性があります。
       trailingForwardSlash: サーバーURLの末尾にスラッシュを付けないでください。
       url: サーバーURLはURLでなければなりません。
+      awsStyleEndpoint: Endpoint URL has to be a valid domain-based endpoint and cannot start with a protocol (e.g https:// or http://)
   genericUrl: フィールドは有効なURLでなければなりません
   stringLength:
     between: '"{key}"は{min}から{max}文字の間でなければなりません'
@@ -6787,12 +6996,13 @@ validation:
       match: 少なくとも1つのMatchまたはMatch Regexを選択する必要があります
       interval: '"{key}"は数字の後に単位が続く形式でなければなりません（例：1h、2m、30s）'
   tab: "このタブの1つ以上のフィールドにフォーム検証エラーが含まれています"
-
+  version: Invalid Version number
+  git:
+    url: URLは末尾にスペースのないHTTP(s)またはSSH URLでなければなりません
 carousel:
   previous: 前へ
   next: 次へ
   controlItem: スライド番号{number}に移動
-
 wizard:
   previous: 前へ
   finish: 完了
@@ -6801,7 +7011,16 @@ wizard:
   edit: 編集
   create: 作成
   view: 表示
+  install: Install
+  upgrade: Upgrade
+  downgrade: Downgrade
+sideWindow:
+  secondary:
+    resize: Resize secondary window
 wm:
+  resize: Resize Window - use arrow keys {arrow1} and {arrow2} to resize with keyboard
+  tabIcon: Window tab icon
+  closeTab: Close tab - {tabId}
   connection:
     connected: 接続済み
     connecting: 接続中&hellip;
@@ -6838,9 +7057,6 @@ wm:
     timestamps: タイムスタンプを表示
     wrap: 行を折り返す
   containerShell:
-    resizeShellWindow: シェルウィンドウのサイズを変更 - キーボードでサイズ変更するには矢印キー{arrow1}と{arrow2}を使用します
-    tabIcon: シェルタブアイコン
-    closeShellTab: シェルタブを閉じる - {tab}
     escapeText: ターミナルからフォーカスを外すにはShift+Escapeを押します
     clear: クリア
     containerName: "コンテナ: {label}"
@@ -6852,10 +7068,11 @@ wm:
       debug: DEBUG
     logMessage:
       containerError: "{ logLevel }: コンテナにシェル実行可能ファイルがありません (/bin/sh)"
-
+    resizeShellWindow: シェルウィンドウのサイズを変更 - キーボードでサイズ変更するには矢印キー{arrow1}と{arrow2}を使用します
+    tabIcon: シェルタブアイコン
+    closeShellTab: シェルタブを閉じる - {tab}
   kubectlShell:
     title: "Kubectl: {name}"
-
 workload:
   scaleWorkloads: ワークロードのスケーリング
   healthWorkloads: ジョブ/Podのヘルスステータス
@@ -6911,11 +7128,11 @@ workload:
       successThreshold: 成功のしきい値
       timeout: タイムアウト
       kind:
-        none:  なし
-        HTTP:  HTTPリクエストが成功ステータス（200-399）を返す
+        none: なし
+        HTTP: HTTPリクエストが成功ステータス（200-399）を返す
         HTTPS: HTTPSリクエストが成功ステータスを返す
-        tcp:   TCP接続が正常に開く
-        exec:  コンテナ内で実行されたコマンドがステータス0で終了する
+        tcp: TCP接続が正常に開く
+        exec: コンテナ内で実行されたコマンドがステータス0で終了する
     image: コンテナイメージ
     imagePullPolicy: プルポリシー
     imagePullSecrets:
@@ -7298,7 +7515,6 @@ workload:
     path: パス
     readOnly: 読み取り専用
     server: サーバー
-
     subPath: ボリューム内のサブパス
     title: 'ストレージ'
     volumeName: ボリューム名
@@ -7359,7 +7575,6 @@ workload:
       deployment: デプロイメント
       pod: Pod
       containers: コンテナ
-
 ##############################
 # Model Properties
 ##############################
@@ -7381,6 +7596,8 @@ model:
       saml: SAML
       oauth: OAuth
       oidc: OIDC
+      keycloakoidc: Keycloak
+      genericoidc: OIDC provider
       cognito: Amazon Cognito
     name:
       keycloak: Keycloak (SAML)
@@ -7392,6 +7609,7 @@ model:
       activedirectory: ActiveDirectory
       azuread: AzureAD
       github: GitHub
+      githubapp: GitHub App
       keycloak: Keycloak
       ldap: LDAP
       openldap: OpenLDAP
@@ -7404,8 +7622,6 @@ model:
       genericoidc: Generic OIDC
       keycloakoidc: Keycloak
       cognito: Amazon Cognito
-
-
   cluster:
     name: クラスタ名
   ingress:
@@ -7436,7 +7652,6 @@ model:
     displayKind:
       generic: サービス
       loadBalancer: L4バランサー
-
 typeDescription:
   # Map of
   # type: Description to be shown on the top of list view describing the type.
@@ -7473,7 +7688,6 @@ typeDescription:
   logging.banzaicloud.io.output: 出力は、ログを送信できるロギングプロバイダーを定義します。出力は、それを使用しているフローと同じ名前空間にある必要があります。
   group.principal: グループへのグローバルロールの割り当ては、グループをサポートする外部認証プロバイダーでのみ機能します。ローカル認証はグループをサポートしていません。
   management.cattle.io.oidcclient: ここで、RancherのシングルサインオンIDプロバイダーにアプリケーションを追加できます
-
 typeLabel:
   management.cattle.io.oidcclient: |-
     {count, plural,
@@ -7786,6 +8000,11 @@ typeLabel:
       one { Secret }
       other { Secrets }
     }
+  projectsecret: |-
+    {count, plural,
+      one { Project Secret }
+      other { Project Secrets }
+    }
   apiregistration.k8s.io.apiservice: |-
     {count, plural,
       one { APIService }
@@ -8041,7 +8260,6 @@ typeLabel:
       one { クラスタ登録トークン }
       other { クラスタ登録トークン }
     }
-
 oidcclient:
   a11y:
     copyText:
@@ -8092,12 +8310,11 @@ oidcclient:
   refreshTokenExpirationSeconds:
     detailLabel: リフレッシュトークンの有効期限（秒）
     label: リフレッシュトークンの有効期限
-    placeholder:  再ログインなしで新しいアクセス/IDトークンを取得するためにリフレッシュトークンを使用できる期間（秒）
+    placeholder: 再ログインなしで新しいアクセス/IDトークンを取得するためにリフレッシュトークンを使用できる期間（秒）
   tokenExpirationSeconds:
     detailLabel: トークンの有効期限（秒）
     label: トークンの有効期限
-    placeholder:  ユーザー認証情報を含むトークンが有効な期間（秒）
-
+    placeholder: ユーザー認証情報を含むトークンが有効な期間（秒）
 action:
   ariaLabel:
     hidePass: '{area}を非表示'
@@ -8129,7 +8346,7 @@ action:
   runNow: 今すぐ実行
   suspend: 一時停止
   resume: 再開
-
+  showConfiguration: Show Configuration
 unit:
   sec: 秒
   min: 分
@@ -8147,15 +8364,12 @@ workloadPorts:
   addPort: ポートまたはサービスを追加
   remove: 削除
   addHost: ホストを追加
-
 podAffinity:
   addLabel: Podセレクターを追加
-
 keyValue:
   keyPlaceholder: 例：foo
   valuePlaceholder: 例：bar
   protip: '<em>key=value</em> または <em>key:value</em> の行を任意のキーフィールドに貼り付けて、簡単に一括入力できます'
-
 registryMirror:
   header: ミラー
   toolTip: 'ミラーを使用して、あるレジストリからのイメージリクエストを、指定したエンドポイントのリストから来るようにリダイレクトできます。たとえば、docker.ioはDockerHubに行く代わりに内部レジストリにリダイレクトできます。'
@@ -8165,7 +8379,6 @@ registryMirror:
   hostnamePlaceholder: 例：docker.io または *
   endpointsLabel: ミラーエンドポイント
   endpointsPlaceholder: 例：a.registry.com:5000, b.registry.com:5000
-
 registryMirrorRewrite:
   header: 書き換え
   toolTip: '各ミラーには書き換えのセットを設定できます。書き換えは正規表現に基づいてイメージのタグを変更できます。'
@@ -8174,17 +8387,14 @@ registryMirrorRewrite:
   keyPlaceholder: 例：^rancher/(.*)
   valueLabel: 書き換え置換
   valuePlaceholder: 例：mirrorproject/rancher-images/$1
-
 registryConfig:
   header: レジストリ認証
   toolTip: '特定のレジストリホスト名からイメージをプルする必要がある場合、この情報を使用してレジストリのIDを検証し、認証します。'
   addLabel: レジストリを追加
   description: "各レジストリホスト名とミラーのTLSおよび認証情報設定を定義します。"
-
 ##############################
 ### Advanced Settings
 ##############################
-
 advancedSettings:
   setEnv: 環境変数で設定
   hideShow: 設定の表示/非表示
@@ -8221,6 +8431,7 @@ advancedSettings:
     'auth-user-info-max-age-seconds': '認証プロバイダーのグループメンバーシップ同期が実行される前の、ユーザーの認証トークンの最大有効期間。'
     'auth-user-info-resync-cron': '認証プロバイダーのグループメンバーシップを再同期するためのデフォルトのcronスケジュール。'
     'cluster-template-enforcement': '管理者以外のユーザーは、事前に承認されたRKEテンプレートを介してのみクラスタを起動することが制限されます。'
+    'auth-user-session-idle-ttl-minutes': 'Custom idle TTL (in minutes) on a user auth session. This is the maximum duration a session can stay alive when there is no user activity in a browser. This should be smaller than "auth-user-session-ttl-minutes". If "auth-user-session-idle-ttl-minutes" is greater than or equal to "auth-user-session-ttl-minutes" then the session idle feature is considered disabled.'
     'auth-user-session-ttl-minutes': 'ユーザー認証セッションのカスタムTTL（分単位）。'
     'auth-token-max-ttl-minutes': 'すべての認証トークンの最大TTL（分単位）。0に設定すると、トークンは期限切れになりません。'
     'kubeconfig-generate-token': 'kubeconfigが要求されたときにユーザーのトークンを自動的に生成します。'
@@ -8261,7 +8472,6 @@ advancedSettings:
       system-store: 'システムストア'
   provisioning:
     header: クラスタプロビジョニング
-
 featureFlags:
   label: 機能フラグ
   title: "よろしいですか？"
@@ -8276,10 +8486,10 @@ featureFlags:
   restart:
     title: 再起動待機中
     wait: これには少し時間がかかる場合があります
-
 performance:
   label: UIパフォーマンス設定
   settingName: パフォーマンス
+  deprecatedInactivitySetting: The <i class="mr-5">"Inactivity"</i> setting is now deprecated in favor of the <i class="mr-5">auth-user-session-idle-ttl-minutes</i>&nbsp;<a href="{settingsPageUrl}">Setting</a>.
   deprecatedForSSP: <i class="mr-5">「{setting}」</i>設定は非推奨となり、将来のリリースで削除されます。
   incrementalLoad:
     label: インクリメンタル読み込み
@@ -8386,7 +8596,6 @@ banner:
   htmlWarning: 'すべてのHTML要素や属性が許可されているわけではなく、ここに入力されたHTMLは表示前にサニタイズされます。HTMLのアンカー要素については、リンクを新しいタブで開くためにtarget属性を使用することをお勧めします。'
   htmlContent: HTMLコンテンツ
   toggleTextHtml: テキストとHTMLを切り替える
-
 branding:
   label: ブランディング
   directoryName: ブランドアセットディレクトリ名
@@ -8502,18 +8711,16 @@ customLinks:
     valueLabel: URL
     showLabel: 表示
   defaults:
-    docs:       ドキュメント
-    forums:     フォーラム
-    slack:      Slack
-    issues:     問題を報告
+    docs: ドキュメント
+    forums: フォーラム
+    slack: Slack
+    issues: 問題を報告
     getStarted: はじめに
     commercialSupport: 商用サポート
     appCo: SUSE Application Collection
-
 ##############################
 ### Support Page
 ##############################
-
 support:
   bannerImage: サポートページのバナー画像
   community:
@@ -8529,7 +8736,6 @@ support:
     addLabel: "有効なサブスクリプションIDを入力してください："
     removeTitle: IDを削除しますか？
     removeBody: "注：これはサブスクリプションには影響しません。"
-
   suse:
     title: "朗報です - あなたはサポート対象です"
     editBrand: UIテーマをカスタマイズ
@@ -8553,22 +8759,23 @@ support:
     four:
       title: 自由なイノベーション
       text: 幅広いKubernetesプロバイダー、オペレーティングシステム、オープンソースソフトウェアとの認定された互換性を活用してください。
-
 embedding:
   retry: 再試行
   unavailable: クラスタマネージャUIは利用できません
-
 serverUpgrade:
   title: "{vendor}サーバーが変更されました"
   message: "サーバーで実行されている{vendor}のバージョンが変更されたため、ページが再読み込みされました。"
-
 volumeClaimTemplate:
   add:
     label: 要求テンプレートを追加
-
 manager:
   cloudCredentials:
     label: クラウド認証情報
+    list:
+      groupBy:
+        provider: Group by Provider
+      headers:
+        provider: Provider
     renew: 更新
     expired: 期限切れ
     banners:
@@ -8582,7 +8789,6 @@ manager:
     label: ノードテンプレート
   jwtAuthentication:
     label: JWT認証
-
 auth:
   roleTemplate: ロールテンプレート
   config:
@@ -8592,7 +8798,6 @@ vncConsole:
     message: Web VNCコンソールが切断されました
   reconnecting:
     message: Web VNCコンソールの再接続試行
-
 gitPicker:
   github:
     label: GitHub
@@ -8668,11 +8873,9 @@ gitPicker:
     errors:
       noAccount: GitLabアカウントまたは組織が見つかりません。クエリを確認して再試行してください。
       noBranch: ブランチが見つかりません。クエリを確認して再試行してください。
-
 networkAttachmentDefinition:
   tabs:
     config: 設定
-
 errors:
   actionNotAvailable: このアクションは現在利用できません
   missingRequired: は必須です
@@ -8723,6 +8926,9 @@ component:
         title: 設定
   resource:
     detail:
+      copyToClipboard:
+        ariaLabel:
+          copy: Copy to clipboard
       card:
         resourceUsage:
           used: 使用済み
@@ -8757,7 +8963,6 @@ component:
       metadata:
         labelsAndAnnotations: ラベルとアノテーション
         identifyingInformation:
-          createdBy: 作成者
           namespace: Namespace
           project: プロジェクト
           age: 経過時間
@@ -8771,6 +8976,7 @@ component:
           issuer: 発行者
           expires: 有効期限
           workspace: ワークスペース
+          createdBy: 作成者
         annotations:
           title: アノテーション
         labels:
@@ -8778,3 +8984,156 @@ component:
         keyValue:
           noRows: このリソースには{propertyName}が設定されていません。
           showConfiguration: 設定を表示
+          ariaLabel:
+            showPreview: Show Preview
+      glance:
+        state: State
+        age: Age
+        namespace: Namespace
+        project: Project
+        type: Type
+        ariaLabel:
+          showDetails: Show Resource Information about { resource } named { name }
+          actionMenu: Resource Actions - { resource }
+  cron:
+    expressionEditor:
+      label:
+        minute: "Minute"
+        hour: "Hour"
+        dayOfMonth: "Day of Month"
+        month: "Month"
+        dayOfWeek: "Day of Week"
+      invalidValue: "Invalid value"
+      invalidCronExpression: "Invalid Cron Expression"
+      minute:
+        any: "any value (every minute)"
+        at1and5: "at 1 and 5 min past the hour"
+        range: "every minute from 1 to 5"
+        every5: "every 5 minutes"
+        start8: "every 5 minutes, starting at 8 minutes past the hour"
+        allowed: "Allowed literal values: 0-59"
+      hour:
+        any: "any value (every hour)"
+        at1and5: "at 1 AM and 5 AM"
+        range: "every hour from 1 to 5 AM"
+        every5: "every 5 hours"
+        start8: "every 5 hours starting at 8 AM"
+        allowed: "Allowed literal values: 0-23"
+      dayOfMonth:
+        any: "any value (every day of the month)"
+        omit: "omit"
+        1and5: "on the 1st and 5th days of the month"
+        range: "every day from 1st to 5th"
+        every5: "every 5 days"
+        start8: "every 5 days starting at the 8th"
+        allowed: "Allowed literal values: 1-31"
+      month:
+        any: "any value (every month)"
+        1and5: "on months 1 and 5 (January and May)"
+        range: "every month from January to May"
+        every2: "every 2 months"
+        start3: "every 2 months, starting on month 3 (March)"
+        allowed: "Allowed literal values: 1-12"
+        alias: "Allowed alias values: jan-dec"
+      dayOfWeek:
+        any: "any value (every day of the week)"
+        omit: "omit"
+        1and5: "on days 1 and 5 (Monday and Friday)"
+        range: "every day from Monday to Friday"
+        allowed: "Allowed literal values: 0-7"
+        alias: "Allowed alias values: mon-sun"
+      a11y:
+        examples: "Edit {label}. Examples:"
+    expressionEditorModal:
+      title: "Define Cron expression"
+      description: "Click on any field to get hints about valid values and wildcard symbols."
+      wildcards:
+        title: "Generic Wildcards"
+        anyValue: "any value"
+        xAndY: "X and Y"
+        fromXtoY: "from X to Y"
+        everyX: "every X"
+        everyXStartingY: "every X starting at Y"
+        everyXFromYtoZ: "every X, from Y to Z"
+      examples:
+        title: "Examples"
+        dailyMidnight: "At 12:00 AM"
+        every5Hours: "At 0 minutes past the hour, every 5 hours"
+        day1At1745: "At 05:45 PM, on day 1 of the month"
+        weekdaysAt0830: "At 30 minutes past the hour, every 1 hours, starting at 08:00 AM, Monday through Friday"
+        marchToMayHourly: "Every hour, only in March, April, and May"
+        every4Hours9to17: "At 0 minutes past the hour, every 4 hours, between 09:00 AM and 05:00 PM"
+autoscaler:
+  card:
+    title: Autoscaler
+    pause: Pause
+    resume: Resume
+    loadingError: There was a problem loading details
+    loadingAlt: Details Loading
+    details:
+      status: Status
+      health: Health
+      scaleDown: Scale Down
+      scaleUp: Scale Up
+      nodes: Nodes
+      ready: Ready
+      notStarted: Not Started
+      inTotal: In Total
+      provisioning: Provisioning
+      paused: Paused
+      unavailable: Unavailable
+  tab:
+    title: Autoscaler
+windowmanager:
+  closeTab: 'タブ {tabId} を閉じる'
+translation:
+  outputProviders:
+    elasticsearch: Elasticsearch
+    opensearch: OpenSearch
+    redis: Redis
+    splunkHec: Splunk
+    kafka: Kafka
+    forward: Fluentd
+    gelf: GELF
+    loki: Loki
+    awsElasticsearch: Amazon Elasticsearch
+    azurestorage: Azureストレージ
+    cloudwatch: Cloudwatch
+    datadog: Datadog
+    file: ファイル
+    gcs: GCS
+    kinesisStream: Kinesisストリーム
+    logdna: LogDNA
+    logz: LogZ
+    newrelic: New Relic
+    sumologic: SumoLogic
+    syslog: Syslog
+    s3: S3
+    unknown: 不明
+  overview:
+    poweredBy: Banzai Cloud
+    clusterLevel: クラスターレベル
+    namespaceLevel: Namespaceレベル
+  provider: プロバイダー
+  splunk:
+    host: ホスト
+    port: ポート
+    protocol: プロトコル
+    index: インデックス
+    token: Secretからのトークン
+    insecureSsl: 安全でないSSL
+    indexName: インデックス名
+    source: ソース
+    caFile: SecretからのCAファイル
+    caPath: SecretからのCAパス
+    clientCert: Secretからのクライアント証明書
+    clientKey: Secretからのクライアントキー
+  forward:
+    host: ホスト
+    port: ポート
+    sharedKey: Secretからの共有キー
+    username: Secretからのユーザー名
+    password: Secretからのパスワード
+    clientCertPath: Secretからのクライアント証明書パス
+    clientPrivateKeyPath: Secretからのクライアント秘密鍵パス
+    clientPrivateKeyPassphrase: Secretからのクライアント秘密鍵パスフレーズ
